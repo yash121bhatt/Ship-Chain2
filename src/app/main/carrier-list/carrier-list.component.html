@@ -1,0 +1,214 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="d-flex gap-1">
+                <a routerLink="/">Trucking Companies</a> | <a routerLink="/carrier-list/{{getSlug}}">{{getCountryTitle}}</a>
+            </div>
+            <div class="col-3">
+                <mat-card class="mt-4">
+                    <mat-card-content>
+                        <p><b>Lane Search</b></p>
+                        <mat-form-field>
+                            <mat-label>Favorite food</mat-label>
+                            <mat-select [(value)]="selectedValue" name="food">
+                                <mat-option *ngFor="let food of foods"
+                                    [value]="food.value">{{food.viewValue}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Favorite food</mat-label>
+                            <mat-select [(value)]="selectedValue" name="food">
+                                <mat-option *ngFor="let food of foods"
+                                    [value]="food.value">{{food.viewValue}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-card-content>
+                </mat-card>
+                <hr>
+                <p><b>Company Name</b></p>
+                <input type="text">
+
+                <hr>
+
+                <p><b>Truck Type</b></p>
+                @for (truckType of truckTypes; track $index) {
+                <mat-checkbox class="example-margin" value="{{truckType.id}}" >{{truckType.name}}</mat-checkbox>
+                }
+                <hr>
+                <p><b>Shipment Type</b></p>
+                
+                @for (shipmentType of shipmentTypes; track $index) {
+                <mat-checkbox class="example-margin" value="{{shipmentType.id}}">{{shipmentType.name}}</mat-checkbox>
+                }
+
+                <hr>
+                <p><b>Specialized Service</b></p>
+                
+                @for (specializedService of specializedServices; track $index) {
+                <mat-checkbox class="example-margin" value="{{specializedService.id}}">{{specializedService.name}}</mat-checkbox>
+                }
+                <hr>
+                <p><b>Freight</b></p>
+                
+                @for (freight of freights; track $index) {
+                <mat-checkbox class="example-margin" value="{{freight.id}}">{{freight.name}}</mat-checkbox>
+                }
+            
+
+                <hr>
+                <p><b>Operation</b></p>
+               
+                @for (operation of operations; track $index) {
+
+                    <mat-checkbox class="example-margin" value="{{operation.id}}">{{operation.name}}</mat-checkbox>
+                    
+                }
+                
+               
+
+
+                <hr>
+                <p><b>Insurance Minimum</b></p>
+                
+                <mat-radio-group name="flavors">
+                    @for (insuranceMini of insuranceMinimum; track $index) {
+                    <mat-radio-button value="chocolate" checked="true" value="{{insuranceMini.id}}" >{{insuranceMini.name}}</mat-radio-button>
+                    }
+                </mat-radio-group>
+
+                <hr>
+                <p><b>Authority Maintained</b></p>
+
+                <mat-radio-group name="flavors">
+                    @for (authorityMaintained of authorityMaintained; track $index) {
+                    <mat-radio-button value="chocolate" checked="true" value="{{authorityMaintained.id}}" >{{authorityMaintained.name}}</mat-radio-button>
+                    }
+                </mat-radio-group>
+
+                <hr>
+                <p><b>Fleet Size</b></p>
+
+                <form action="" class="d-flex gap-2">
+                    <input type="text" class="form-control" placeholder="Maximum">
+                    <input type="text" class="form-control" placeholder="Minimum">
+                </form>
+
+            </div>
+            <div class="col-9 p-4">
+                <h4>Top Trucking Companies in <b>{{getCountryTitle}}</b></h4>
+                <p>The top trucking companies in <span><b>{{getCountryTitle}}</b></span> based on real broker and shipper reviews that have been
+                    moderated and
+                    verified by CarrierSource to ensure the highest level of integrity. In addition to reviews, you'll
+                    find
+                    fleet, insurance, safety, and contact information sourced from the FMCSA, and equipment information
+                    submitted by the carrier or gathered through reviews.</p>
+                <hr>
+                <div class="row p-4">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <p>10,000 companies are shipping based on selected filters</p>
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-3">
+                        <button style="border-radius: 0;" mat-stroked-button><mat-icon>download</mat-icon> Download
+                            List</button>
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-3">
+                        <mat-form-field class="w-75">
+                            <mat-label>Favorite food</mat-label>
+                            <mat-select [(value)]="selectedValue" name="food">
+                                <mat-option *ngFor="let food of foods"
+                                    [value]="food.value">{{food.viewValue}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="container">
+                    @for (carrier of carriers; track carrier) {
+                    <mat-card appearance="outlined" class="p-4 mt-4">
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="/logo-img.png" alt="logo" class="img-fluid">
+                            </div>
+                            <div class="col-7 ml-4">
+                                <mat-card-title>
+
+                                    {{carrier.legalName}}
+                                    <mat-icon color="primary">check_circle</mat-icon>
+
+                                    <mat-chip color="primary" selected style="border-radius: 10px;">
+                                        @if (carrier.carrierOperation == 'A') {
+                                        Interstate
+                                        }@else if (carrier.carrierOperation == 'B') {
+                                            Intrastate Hazmat 
+                                        }@else if (carrier.carrierOperation == 'C') {
+                                            Intrastate Non-Hazmat
+                                        }
+                                    </mat-chip>
+                                       <p>N/A | USDOT {{carrier.dotNumber}}</p>
+                                </mat-card-title>
+
+                            </div>
+                            <div class="col-3">
+                                <button mat-flat-button style="width: 100%; border-radius: 0; margin-top: 5%;">Request
+                                    Query</button>
+                                <button mat-stroked-button
+                                    style="width: 100%; border-radius: 0;margin-top: 5%">Contact</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row p-4 d-flex">
+                            <div class="col-6">
+                                <p><b>Fleet Size:</b> 1,000 Trucks</p>
+
+                                <p>Insurance : <b>75000</b></p>
+
+                            </div>
+                            <div class="col-6">
+                                <p>
+                                    Authority : <i class="bi bi-circle-fill" style="color:lightgreen"></i> Common Active
+                                    ({{ carrier.addDate | date: 'MM/dd/yyyy' }})</p>
+                                <p>
+                                    Safety Rating : <b>None</b>
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row p-4">
+
+                            <div class="col-6">
+                                <p><b>Freight</b>: (1)</p>
+                                <ul>
+                                    <li>
+                                        General Freight
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <p><b>Truck Types</b>: (4)</p>
+                                <ul>
+                                    <li>container</li>
+                                    <li>Flatbed</li>
+                                    <li>Oversized</li>
+                                    <li>Conestoga</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <a routerLink="/carrier-detail">Read more about {{carrier.legalName}}</a>
+                            </div>
+                            <div class="col-6">
+                                <button mat-button><mat-icon>bookmark</mat-icon>Save Carrier</button>
+                                <button mat-button><mat-icon>edit</mat-icon>Write a Review</button>
+                            </div>
+                        </div>
+                        <hr>
+                    </mat-card>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

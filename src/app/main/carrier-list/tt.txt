@@ -1,0 +1,111 @@
+<mat-drawer-container class="example-container" style="height: 100vh; overflow: hidden;">
+    <mat-drawer mode="side" opened style="width: 300px; overflow: hidden; height: 100vh;">
+        <mat-card class="mt-4">
+            <mat-card-content>
+                <h6>mat-select</h6>
+                <mat-form-field>
+                    <mat-label>Favorite food</mat-label>
+                    <mat-select [(value)]="selectedValue" name="food">
+                        <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Favorite food</mat-label>
+                    <mat-select [(value)]="selectedValue" name="food">
+                        <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+    </mat-drawer>
+    <mat-drawer-content style="overflow: hidden; height: 100vh;">
+        <h4>Top Trucking Companies in Canada</h4>
+        <p>The top trucking companies in Canada based on real broker and shipper reviews that have been moderated and
+            verified by CarrierSource to ensure the highest level of integrity. In addition to reviews, you'll find
+            fleet, insurance, safety, and contact information sourced from the FMCSA, and equipment information
+            submitted by the carrier or gathered through reviews.</p>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <p>10,000 companies are shipping based on selected filters</p>
+            </div>
+            <div class="col-3">
+                <button style="border-radius: 0;" mat-stroked-button><mat-icon>download</mat-icon> Download List</button>
+            </div>
+            <div class="col-3">
+                <mat-form-field>
+                    <mat-label>Favorite food</mat-label>
+                    <mat-select [(value)]="selectedValue" name="food">
+                        <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewValue}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="container">
+            <mat-card appearance="outlined" style="width: 70vw; border-radius: 10px; margin: auto;">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="/logo-img.png" alt="logo" class="img-fluid">
+                    </div>
+                    <div class="col-7 ml-4">
+                        <mat-card-title>
+
+                            Lion Force Transport Inc
+                            <mat-icon color="primary">check_circle</mat-icon>
+                           
+                                <mat-chip color="primary" selected style="border-radius: 10px;">
+                                    Interstate
+                                </mat-chip>
+                           
+                        </mat-card-title>
+
+                    </div>
+                    <div class="col-3">
+                        <button mat-flat-button style="width: 100%; border-radius: 0; margin-top: 5%;">Request Query</button>
+                        <button mat-stroked-button style="width: 100%; border-radius: 0;margin-top: 5%">Contact</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-4 d-flex">
+                    <div class="col-6">
+                        <p><b>Fleet Size:</b> 1,000 Trucks</p>
+                       
+                            <p>Insurance : <b>75000</b></p>
+                        
+                    </div>
+                    <div class="col-6">
+                        <p>
+                            Authority : <i class="bi bi-circle-fill" style="color:lightgreen"></i> Common Active (09/13/2022)</p>
+                        <p>
+                            Safety Rating : <b>None</b> 
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-4">
+
+                    <div class="col-6">
+                        <p><b>Freight</b>: (1)</p>
+                        <ul>
+                            <li>
+                                General Freight
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <p><b>Truck Types</b>: (4)</p>
+                        <ul>
+                            <li>container</li>
+                            <li>Flatbed</li>
+                        </ul>
+                    </div>
+                    <div class="col-3"></div>
+
+                </div>
+                
+            </mat-card>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>
+

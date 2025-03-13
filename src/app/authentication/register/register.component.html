@@ -1,0 +1,60 @@
+<section class="d-flex flex-column align-items-center justify-content-center bg-light py-5">
+    <div class="card w-25 mt-4 shadow-lg" style="border-radius: 2rem;">
+        <div class="card-body p-4">
+            <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+                <p class="text-center h4">Well come to Ship-Chain !</p>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary rounded-pill py-2"><i class="bi bi-linkedin me-2"></i>  SignUp with LinkedIn</button>
+                    <button type="submit" class="btn btn-primary rounded-pill py-2"><i class="bi bi-facebook me-2"></i>  SignUp with Facebook</button>
+                    <button type="submit" class="btn btn-light rounded-pill py-2"><i class="bi bi-google me-2"></i>  SignUp with Google</button>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control rounded-pill" formControlName="email" placeholder="Enter email">
+                    <div class="text-danger">
+                        @if(registerForm.controls['email'].touched && registerForm.controls['email'].errors?.['email'] ) {
+                            <span>This is a invalid email address</span>
+                      }
+                    </div>
+                </div>
+                <div class="row form-group mt-2">
+                    <div class="col">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control rounded-pill" placeholder="First name" formControlName="firstName" aria-label="First name">
+                        <div class="text-danger">
+                            @if(registerForm.controls['firstName'].touched && registerForm.controls['firstName'].errors?.['required'] ) {
+                                <span>Enter your name</span>
+                          }
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="lastName" class="form-label">Second Name</label>
+                        <input type="text" class="form-control rounded-pill" placeholder="Last name" formControlName="lastName" aria-label="Last name">
+                        <div class="text-danger">
+                            @if(registerForm.controls['lastName'].touched && registerForm.controls['lastName'].errors?.['required'] ) {
+                                <span>Enter your last name</span>
+                          }
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control rounded-pill" formControlName="password" placeholder="Password">
+                    <div class="text-danger">
+                        @if(registerForm.controls['password'].touched && registerForm.controls['password'].errors?.['minlength'] ) {
+                            <span>Enter your valid password</span>
+                      }
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-primary rounded-pill py-2 px-4">SignUP</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <p>Don't have an account yet? <a routerLink="/register">Sign up</a></p>
+    </div>
+</section>
+

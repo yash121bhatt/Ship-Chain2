@@ -8,18 +8,28 @@ import { VerifactionComponent } from './authentication/verifaction/verifaction.c
 import { VerifyComponent } from './authentication/verify/verify.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { ForgotEmailSendComponent } from './authentication/forgot-email-send/forgot-email-send.component';
+import { ProfileComponent } from './main/profile/profile.component';
+import { activatGuard } from './activat.guard';
 
 export const routes: Routes = [
     {
-       path: '',
-       loadComponent: () => import('./main/table/table.component').then(m => m.TableComponent)
+       path: 'table',
+       loadComponent: () => import('./main/table/table.component').then(m => m.TableComponent),
+       canActivate: [activatGuard]
     },
       
     {
-       path: 'login',
+       path: '',
        component : LoginComponent,
-       pathMatch: 'full'
+       pathMatch: 'full',
     },
+
+    {
+      path: 'my-profile',
+      component : ProfileComponent,
+      pathMatch: 'full',
+      canActivate : [activatGuard]
+   },
 
     {
         path: 'register',

@@ -19,6 +19,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { ActivatedRoute } from '@angular/router';
 import { ServicesService } from '../../myservices/services.service';
 import { RouterLink } from '@angular/router';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 interface Food {
@@ -35,7 +36,7 @@ interface Car {
 @Component({
   selector: 'app-carrier-list',
   standalone: true,
-  imports: [CommonModule, MatSidenavModule, MatCardModule, MatInputModule, MatSelectModule, MatFormFieldModule, FormsModule, MatButtonModule, MatIcon, MatChipsModule,MatCheckboxModule,MatToolbar,MatMenu,MatNavList,MatListItem,MatDrawerContainer,MatRadioModule,RouterLink],
+  imports: [CommonModule, MatSidenavModule, MatCardModule, MatInputModule, MatSelectModule, MatFormFieldModule, FormsModule, MatButtonModule, MatIcon, MatChipsModule,MatCheckboxModule,MatToolbar,MatMenu,MatNavList,MatListItem,MatDrawerContainer,MatRadioModule,RouterLink,NgxSkeletonLoaderModule],
   templateUrl: './carrier-list.component.html',
   styleUrl: './carrier-list.component.css'
 })

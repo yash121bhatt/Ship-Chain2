@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ResetPasswordComponent {
   queryData : any;
   resetPasswordForm : FormGroup
+  showPassword = false;
 constructor(private services:ServicesService , private activeRoute:ActivatedRoute , private fb: FormBuilder , private router: Router) {
   this.queryData = this.activeRoute.snapshot.queryParams;
     console.log(this.queryData);
@@ -25,6 +26,10 @@ constructor(private services:ServicesService , private activeRoute:ActivatedRout
 
 
 ngOnInit(): void {}
+
+togglePasswordVisibility() {
+  this.showPassword = !this.showPassword;
+}
 
   resetPasswordSubmit(){
     const finalData = {...this.queryData , ...this.resetPasswordForm.value}

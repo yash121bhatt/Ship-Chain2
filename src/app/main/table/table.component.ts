@@ -3,11 +3,12 @@ import {MatCardModule} from '@angular/material/card';
 import { ServicesService } from '../../myservices/services.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [ CommonModule,MatCardModule,RouterLink],
+  imports: [ CommonModule,MatCardModule,RouterLink,NgxSkeletonLoaderModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })

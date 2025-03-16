@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,5 +13,15 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
-  
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
+
 }

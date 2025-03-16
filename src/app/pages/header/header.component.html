@@ -17,8 +17,8 @@
       </form>
   </div>
     <span class="example-spacer"></span>
-    <button mat-button>Logout</button>
-    <button routerLink="/login" mat-button>Sign In</button>
+    <button mat-button (click)="logout()" >Logout</button>
+    <button routerLink="/" mat-button>Sign In</button>
   </mat-toolbar-row>
 </mat-toolbar>
 

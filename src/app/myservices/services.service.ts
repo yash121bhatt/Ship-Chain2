@@ -38,4 +38,12 @@ export class ServicesService {
     return this.http.post('https://api-rk-geographical.onrender.com/api/auth/reset-password',data);
   }
 
+  myProfileSubmit(){
+    return this.http.get('https://api-rk-geographical.onrender.com/api/auth/profile');
+  }
+
+  carrearShipperdetail(data:any){
+    return this.http.post('https://api-rk-geographical.onrender.com/api/auth/assign-role',data)
+  }
+
 }

@@ -6,7 +6,8 @@
     </div>
     <div class="col-7">
       <h4>Trucking Companies by Shipment Type</h4>
-      <div *ngFor="let topCompaniesByShipmentType  of topCompaniesByShipmentTypes let i = index"><b>{{ topCompaniesByShipmentType.name }}</b></div>
+      <ul class="md:columns-2 space-y-1.5"
+      *ngFor="let topCompaniesByShipmentType  of topCompaniesByShipmentTypes let i = index"><li><b>{{ topCompaniesByShipmentType.name }}</b></li></ul>
     </div>
   </div>
   <ngx-skeleton-loader count="15" appearance="line" />

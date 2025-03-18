@@ -13,15 +13,16 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
+ 
+  constructor(private router: Router) {
   }
+
+  
 
   logout(){
     localStorage.clear();
     this.router.navigate(['/']);
   }
 
-
 }
+

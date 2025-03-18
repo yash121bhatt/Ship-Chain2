@@ -1,0 +1,12 @@
+ /* :hover main-div{
+
+    background-color: aquamarine;
+} */
+
+.text-4xl.text-black.font-semibold {
+    font-size: 24px;
+}
+
+.text-2xl {
+    font-size: 20px;
+}

@@ -1,0 +1,6 @@
+@media (min-width: 800px) {
+    .md\:columns-2 {
+        -moz-columns: 2;
+        column-count: 2;
+    }
+}

@@ -10,12 +10,13 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
 import { ForgotEmailSendComponent } from './authentication/forgot-email-send/forgot-email-send.component';
 import { ProfileComponent } from './main/profile/profile.component';
 import { activatGuard } from './activat.guard';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
        path: 'table',
        loadComponent: () => import('./main/table/table.component').then(m => m.TableComponent),
-       canActivate: [activatGuard]
+      
     },
       
     {
@@ -27,6 +28,13 @@ export const routes: Routes = [
     {
       path: 'my-profile',
       component : ProfileComponent,
+      pathMatch: 'full',
+      canActivate : [activatGuard]
+   },
+
+   {
+      path: 'dashboard',
+      component : DashboardComponent,
       pathMatch: 'full',
       canActivate : [activatGuard]
    },
@@ -77,5 +85,10 @@ export const routes: Routes = [
         path:'carrier-detail',
         component:CarrierDetailsComponent,
         pathMatch: 'full'
+    },
+
+    {
+        path:'**',
+        redirectTo: '',
     }
 ];

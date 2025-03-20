@@ -14,13 +14,13 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
-       path: 'table',
+       path: '',
        loadComponent: () => import('./main/table/table.component').then(m => m.TableComponent),
       
     },
       
     {
-       path: '',
+       path: 'login',
        component : LoginComponent,
        pathMatch: 'full',
     },

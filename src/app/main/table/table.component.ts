@@ -17,7 +17,9 @@ export class TableComponent {
   topCompaniesByRegions : any;
 
   topCompaniesByShipmentTypes : any;
-  
+
+  showSkeleton = true;
+
   constructor(private http:ServicesService) { }
 
   ngOnInit(){
@@ -30,8 +32,10 @@ export class TableComponent {
       
        this.topCompaniesByRegions = res.topCompaniesByRegions;
        this.topCompaniesByShipmentTypes = res.topCompaniesByShipmentTypes;
+       this.showSkeleton = false;
       
     })
   }
 
 }
+

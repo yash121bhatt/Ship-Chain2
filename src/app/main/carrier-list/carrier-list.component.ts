@@ -59,7 +59,7 @@ export class CarrierListComponent {
   insuranceMinimum : any
   authorityMaintained : any
   operations : any
- 
+  isLoading = true
 
 
 
@@ -101,9 +101,11 @@ export class CarrierListComponent {
    }
 
    getCarrierList(getCountryCode:any) {
+    this.isLoading = true
     this.myService.getCarrierList({phyCountry:getCountryCode}).subscribe((res:any) => {
       console.log(res);
       this.carriers = res.data
+      this.isLoading = false
     })
    }
 
@@ -131,3 +133,4 @@ export class CarrierListComponent {
   
 
 }
+

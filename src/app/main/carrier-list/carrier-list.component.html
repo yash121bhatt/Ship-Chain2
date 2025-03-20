@@ -208,7 +208,9 @@
                     </mat-card>
                 }
                 </div>
-                <ngx-skeleton-loader count="15" appearance="line" />
+                <ng-container *ngIf="!(carriers?.length > 0)">
+                    <ngx-skeleton-loader count="15" appearance="line"></ngx-skeleton-loader>
+                </ng-container>
             </div>
         </div>
     </div>

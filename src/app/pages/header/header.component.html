@@ -3,7 +3,7 @@
     <img matTooltip="Angular Logo" src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo"
       style="height: 40px; margin-right: 16px;">
     <span class="example-spacer"></span>
-    <div class="search-container position-relative">
+    <!-- <div class="search-container position-relative"
       <form class="d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -13,9 +13,35 @@
         </svg>
         <input class="form-control search-input ps-5" type="search" placeholder="Search anything..."
           aria-label="Search">
+         
+       
+    
 
       </form>
-    </div>
+    </div> -->
+    
+    <div class="ng-autocomplete">
+      <ng-autocomplete 
+      [data]="countries"
+      [searchKeyword]="keyword"
+      (selected)="selected($event)"
+      [itemTemplate]="itemTemplate" 
+      [notFoundTemplate]="notFoundTemplate" >
+
+      </ng-autocomplete>
+      
+      <h1>{{searchName}}</h1>
+
+      <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+      </ng-template>
+
+      <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+      </ng-template>
+
+  </div>
+
     <span class="example-spacer"></span>
     <button mat-button (click)="logout()">Logout</button>
     <button routerLink="/login" mat-button>Sign In</button>

@@ -47,7 +47,11 @@ export class LoginComponent {
           this.isLoading = false;
           if (res.token) {
             localStorage.setItem('authToken', res.token);
+            if(res.user.role == 'user'){
             this.router.navigate(['/my-profile']);
+            }else{
+              this.router.navigate(['/dashboard']);
+            }
             console.log('User already logged in');
             // Implement logic for user already logged in
           } else {

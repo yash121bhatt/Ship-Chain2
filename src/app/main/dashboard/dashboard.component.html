@@ -27,22 +27,25 @@
             </mat-card>
         </div>
         <div class="col-9 mt-4">
-            <form [formGroup]="userInfoForm" (ngSubmit)="onSubmitUserInfo()">
+            <form [formGroup]="userInfoForm">
                 <mat-card class="p-4">
                     <h5><b>User Information</b></h5>
                     <div class="row form-group mt-4">
                         <div class="col">
                             <label class="form-label"><b>First Name</b></label>
-                            <input type="text" class="form-control" formControlName="firstName" [value]="user?.user.firstName" placeholder="First name">
+                            <input type="text" class="form-control" formControlName="firstName" [value]="user?.user.firstName" (blur)="onSubmitUserInfo()" placeholder="First name"
+                            (input)="user?.user.firstName = userInfoForm.get('firstName')?.value">
                         </div>
                         <div class="col">
                             <label class="form-label"><b>Last Name</b></label>
-                            <input type="text" class="form-control" formControlName="lastName" [value]="user?.user.lastName" placeholder="Last name">
+                            <input type="text" class="form-control" formControlName="lastName" [value]="user?.user.lastName" (blur)="onSubmitUserInfo()" placeholder="Last name"
+                            (input)="user?.user.lastName = userInfoForm.get('lastName')?.value">
                         </div>
                     </div>
                     <div class="form-group mt-4">
                         <label class="form-label"><b>Company Name</b></label>
-                        <input type="text" class="form-control" formControlName="companyName" [value]="user?.companyName" placeholder="Enter Your Company Name">
+                        <input type="text" class="form-control" formControlName="companyName" [value]="user?.companyName" (blur)="onSubmitUserInfo()" placeholder="Enter Your Company Name"
+                        (input)="user.companyName = userInfoForm.get('companyName')?.value">
                     </div>
                     <!-- <button type="submit" class="btn btn-primary mt-3">Update Info</button> -->
                     <button class="btn btn-primary mt-3" (click)="changePassword()">Change Password</button>

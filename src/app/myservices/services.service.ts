@@ -74,4 +74,8 @@ export class ServicesService {
     return this.http.post('https://api-rk-geographical.onrender.com/api/auth/change-password',data)
   }
 
+  updateShipper(data:any){  
+    return this.http.put('https://api-rk-geographical.onrender.com/api/shippers/profile-update',data);
+  }
+
 }

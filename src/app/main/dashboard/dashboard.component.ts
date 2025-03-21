@@ -65,11 +65,13 @@ export class DashboardComponent {
   }
 
   onSubmitUserInfo() {
-    // if (this.userInfoForm.valid) {
-    //   this.http.updateUserInfo(this.userInfoForm.value).subscribe(() => {
-    //     alert('User information updated successfully!');
-    //   });
-    // }
+    console.log(this.userInfoForm.value);
+    
+    this.http.updateShipper(this.userInfoForm.value).subscribe((res: any) => {
+      if (res.success) {
+        alert(res.message);
+      }
+    })
   }
 
   onSubmitPassword() {

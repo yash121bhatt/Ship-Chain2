@@ -78,4 +78,8 @@ export class ServicesService {
     return this.http.put('https://api-rk-geographical.onrender.com/api/shippers/profile-update',data);
   }
 
+  reviewSearch(params: any) {
+    return this.http.get('https://api-rk-geographical.onrender.com/api/external/carrier-search-for-review', {params});
+  }
+
 }

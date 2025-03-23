@@ -11,6 +11,8 @@ import { ForgotEmailSendComponent } from './authentication/forgot-email-send/for
 import { ProfileComponent } from './main/profile/profile.component';
 import { activatGuard } from './activat.guard';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { WriteReviewComponent } from './pages/write-review/write-review.component';
+import { ContactUsComponent } from './blog/contact-us/contact-us.component';
 
 export const routes: Routes = [
     {
@@ -86,6 +88,18 @@ export const routes: Routes = [
         component:CarrierDetailsComponent,
         pathMatch: 'full'
     },
+
+    {
+      path:'review',
+      component:WriteReviewComponent,
+      pathMatch: 'full'
+    },
+
+   {
+    path:'contact-us',
+    component:ContactUsComponent,
+    pathMatch: 'full'
+   },
 
     {
         path:'**',

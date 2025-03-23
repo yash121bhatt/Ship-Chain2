@@ -1,0 +1,44 @@
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-7 d-flex flex-column justify-content-center">
+                <div>
+                <h5><b>Find a carrier to review</b></h5>
+                <p>Review a carrier that you recently used</p>
+                </div>
+                <div class="mt-4">
+                <form [formGroup]="reviewForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="search"  placeholder="Search carrier by USDOT number, Docket or name "  aria-label="Carrier name">
+                    </div>
+                </form>
+                <div *ngIf="reviewForm.get('search')?.value">
+                    <div class="mt-4">
+                        <p><b>Select the carrier you'd like to review</b></p>
+                        <div>
+                            <mat-card *ngFor="let carrier of findResult; let i = index" class="m-3">
+                                <div class="row p-4 ">
+                                   <div class="col-9 d-flex flex-column justify-content-center">
+                                     <h6><b>{{carrier.legalName}}</b></h6>
+                                     <p>{{carrier.phyCity}}, {{carrier.phyState}} {{carrier.phyZip}}</p>
+                                   </div>
+                                   <div class="col-3 d-flex flex-column justify-content-center">
+                                    <p>USDOT {{carrier.dotNumber}}</p>
+                                    <p>{{carrier.docketNumber || 'NA'}} </p>
+                                    <p> Fleet Size {{carrier.nbrPowerUnit}}</p>
+                                   </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            </div>
+            <div class="col-5 p-3">
+                <img src="https://placehold.co/500x300" alt="my image" class="image-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+

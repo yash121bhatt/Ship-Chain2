@@ -1,0 +1,123 @@
+<section>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <img src="http://placehold.co/1920x300" alt="banner" class="img-fluid">
+                <div class="mt-4">
+                    <div class="container">
+                        <mat-card class="p-4">
+                            <form [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <label for="">First Name</label>
+                                        <input type="text" class="form-control form-control-lg"
+                                            placeholder="First Name" formControlName="firstName">
+                                        <div class="text-danger">
+                                            <span *ngIf="contactForm.controls['firstName'].touched && contactForm.controls['firstName'].errors?.['required'] ">
+                                                <i class="bi bi-star-fill text-danger"></i> Enter Your First Name
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="">Last Name</label>
+                                        <input type="text" class="form-control form-control-lg " placeholder="Last Name" formControlName="lastName">
+                                        <div class="text-danger">
+                                            <span *ngIf="contactForm.controls['lastName'].touched && contactForm.controls['lastName'].errors?.['required'] ">
+                                                <i class="bi bi-star-fill text-danger"></i> Enter Your Last Name
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <label for="">Company Name</label>
+                                        <input type="text" class="form-control form-control-lg " placeholder="Company name" formControlName="companyName">
+                                        <div class="text-danger">
+                                            <span *ngIf="contactForm.controls['companyName'].touched && contactForm.controls['companyName'].errors?.['required'] ">
+                                                <i class="bi bi-star-fill text-danger"></i> Enter Your Company Name
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control form-control-lg " placeholder="Enter your email" formControlName="email">
+                                        <div class="text-danger">
+                                            <span *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].errors?.['email']">
+                                                <i class="bi bi-star-fill text-danger"></i> This is a invalid email address
+                                            </span>
+                                            <span *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].errors?.['required'] ">
+                                                <i class="bi bi-star-fill text-danger"></i> Enter Your Email
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <label for="">How can we help you?</label>
+                                    <textarea name="" id="" cols="30" rows="5" class="form-control form-control-lg " formControlName="message"
+                                        placeholder="Message"></textarea>
+                                        <div class="text-danger">
+                                            <span *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].errors?.['required']">
+                                                <i class="bi bi-star-fill text-danger"></i> Please Enter Your Thoughts.
+                                            </span>
+                                        </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <label for="">Are you sure</label>
+                                    <select class="form-control form-control-lg " formControlName="role">
+                                        <option value="" disabled selected>Please Select</option>
+                                        <option value="Broker">Broker</option>
+                                        <option value="Shipper">Shipper</option>
+                                        <option value="Carrier">Carrier</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div class="text-danger">
+                                        <span *ngIf="contactForm.controls['role'].touched && contactForm.controls['role'].errors?.['required']">
+                                            <i class="bi bi-star-fill text-danger"></i> Please Select who you are.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <span>CarrierSource is committed to protecting and respecting your privacy, and we
+                                        ll only use your personal information to administer your account and to provide
+                                        the products and services you requested from us. From time to time, we would like to
+                                        contact you about our products and services, as well as other content that may be of
+                                        interest to you. If you consent to us contacting you for this purpose, please tick
+                                        below to say how you would like us to contact you:</span>
+                                    <div class="mb-3 form-check mt-4">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="isSubscribed">
+                                        <label class="form-check-label" for="exampleCheck1">I agree to receive other
+                                            communications from CarrierSource.</label>
+                                    </div>
+                                    <div class="text-danger">
+                                        <span *ngIf="contactForm.controls['isSubscribed'].touched && contactForm.controls['isSubscribed'].errors?.['required']">
+                                            <i class="bi bi-star-fill text-danger"></i> Please agree.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <span>
+                                        You can unsubscribe from these communications at any time. For more information on
+                                        how to unsubscribe, our privacy practices, and how we are committed to protecting
+                                        and respecting your privacy, please review our Privacy Policy.
+                                    </span>
+                                </div>
+                                <div class="mt-4">
+                                    <span>By clicking submit below, you consent to allow CarrierSource to store and process
+                                        the personal information submitted above to provide you the content
+                                        requested.</span>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary mt-4 w-100" [disabled]="contactForm.invalid">Submit</button>
+
+                            </form>
+                          
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

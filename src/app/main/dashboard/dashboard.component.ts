@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServicesService } from '../../myservices/services.service';
+import { MatSnackBar, MatSnackBarHorizontalPosition , MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,6 +23,9 @@ export class DashboardComponent {
   passwordForm: FormGroup;
   emailForm: FormGroup;
   userRole: string = '';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  private _snackBar = inject(MatSnackBar);
 
   constructor(private http: ServicesService, private fb: FormBuilder, private router: Router) {
     // Initialize Forms
@@ -45,6 +49,21 @@ export class DashboardComponent {
     this.http.getUserProfile().subscribe((res: any) => {
       this.userRole = res.user.role;
       this.getRoleUsers(this.userRole);
+    }, (err:any)=>{
+      console.log(err);
+      if(err.status == 401){
+        localStorage.removeItem('authToken');
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  openSnackBar(message: string) {
+    const snackRef = this._snackBar.open(message, undefined, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000,
+      panelClass: ['snack-bar-animation']
     });
   }
 
@@ -56,37 +75,54 @@ export class DashboardComponent {
     if (role === 'carrier') {
       this.http.carrierProfile().subscribe((res: any) => {
         this.user = res.carrier;
+        this.userInfoForm.patchValue({
+          firstName: this.user?.user?.firstName,
+          lastName: this.user?.user?.lastName,
+          companyName: this.user?.companyName
+        });
       });
     } else if (role === 'shipper') {
       this.http.shipperProfile().subscribe((res: any) => {
         this.user = res.shipper;
+        this.userInfoForm.patchValue({
+          firstName: this.user?.user?.firstName,
+          lastName: this.user?.user?.lastName,
+          companyName: this.user?.companyName
+        });
       });
     }
   }
+
 
   onSubmitUserInfo() {
     console.log(this.userInfoForm.value);
     
     this.http.updateShipper(this.userInfoForm.value).subscribe((res: any) => {
       if (res.success) {
-        alert(res.message);
+        console.log('message  --- >',res.message);
+        
+        this.openSnackBar(res.message);
       }
-    })
+    });
   }
 
   onSubmitPassword() {
     const { newPassword, confirmPassword } = this.passwordForm.value;
     if (newPassword !== confirmPassword) {
       
-     return  alert('confirm password should match') 
-
+     return this.openSnackBar('Passwords do not match'); 
+         
     }
     
     this.http.changePassword(this.passwordForm.value).subscribe((res: any) => {
       if (res.success) {
-        alert(res.message);
+        this.openSnackBar(res.message);
       }
-    })
+    },
+    (err:any)=>{
+      this.openSnackBar(err.message); 
+    }
+  )
 
   }
 

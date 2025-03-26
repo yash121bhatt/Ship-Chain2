@@ -82,4 +82,20 @@ export class ServicesService {
     return this.http.get('https://api-rk-geographical.onrender.com/api/external/carrier-search-for-review', {params});
   }
 
+  getAllEmail(){
+    return this.http.get('https://api-rk-geographical.onrender.com/api/email-address');
+  }
+
+  addEmail(data:any){
+    return this.http.post('https://api-rk-geographical.onrender.com/api/email-address',data)
+  }
+
+  VerifyOthersEmailAddress(data:any){
+    return this.http.post('https://api-rk-geographical.onrender.com/api/auth/verify-others-email',data);
+  }
+
+  setPrimaryEmail(id:any){
+    return this.http.put(`https://api-rk-geographical.onrender.com/api/email-address/${id}`,{});
+  }
+
 }

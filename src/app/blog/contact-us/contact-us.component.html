@@ -10,19 +10,19 @@
                             <form [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
                                 <div class="row mt-4">
                                     <div class="col-6">
-                                        <label for="">First Name</label>
+                                        <label for="" class="text-start" [class.text-danger]="contactForm.controls['firstName'].touched && contactForm.controls['firstName'].errors?.['required']">First Name<span *ngIf="contactForm.controls['firstName'].touched && contactForm.controls['firstName'].errors?.['required']" class="text-danger"> *</span></label>
                                         <input type="text" class="form-control form-control-lg"
                                             placeholder="First Name" formControlName="firstName">
-                                        <div class="text-danger">
+                                        <div class="text-danger text-start">
                                             <span *ngIf="contactForm.controls['firstName'].touched && contactForm.controls['firstName'].errors?.['required'] ">
                                                 <i class="bi bi-star-fill text-danger"></i> Enter Your First Name
                                             </span>
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <label for="">Last Name</label>
+                                        <label for="" class="text-start" [class.text-danger]="contactForm.controls['lastName'].touched && contactForm.controls['lastName'].errors?.['required']">Last Name<span *ngIf="contactForm.controls['lastName'].touched && contactForm.controls['lastName'].errors?.['required']" class="text-danger"> *</span></label>
                                         <input type="text" class="form-control form-control-lg " placeholder="Last Name" formControlName="lastName">
-                                        <div class="text-danger">
+                                        <div class="text-danger text-start">
                                             <span *ngIf="contactForm.controls['lastName'].touched && contactForm.controls['lastName'].errors?.['required'] ">
                                                 <i class="bi bi-star-fill text-danger"></i> Enter Your Last Name
                                             </span>
@@ -31,18 +31,18 @@
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-6">
-                                        <label for="">Company Name</label>
+                                        <label for="" class="text-start" [class.text-danger]="contactForm.controls['companyName'].touched && contactForm.controls['companyName'].errors?.['required']">Company Name<span *ngIf="contactForm.controls['companyName'].touched && contactForm.controls['companyName'].errors?.['required']" class="text-danger"> *</span></label>
                                         <input type="text" class="form-control form-control-lg " placeholder="Company name" formControlName="companyName">
-                                        <div class="text-danger">
+                                        <div class="text-danger text-start">
                                             <span *ngIf="contactForm.controls['companyName'].touched && contactForm.controls['companyName'].errors?.['required'] ">
                                                 <i class="bi bi-star-fill text-danger"></i> Enter Your Company Name
                                             </span>
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <label>Email</label>
+                                        <label for="" class="text-start" [class.text-danger]="contactForm.controls['email'].touched && contactForm.controls['email'].errors?.['required']">Email<span *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].errors?.['required']" class="text-danger"> *</span></label>
                                         <input type="email" class="form-control form-control-lg " placeholder="Enter your email" formControlName="email">
-                                        <div class="text-danger">
+                                        <div class="text-danger text-start">
                                             <span *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].errors?.['email']">
                                                 <i class="bi bi-star-fill text-danger"></i> This is a invalid email address
                                             </span>
@@ -52,19 +52,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt-4">
-                                    <label for="">How can we help you?</label>
+                                <div class="row mt-4 p-2">
+                                    <label for="" class="text-start" [class.text-danger]="contactForm.controls['message'].touched && contactForm.controls['message'].errors?.['required']">How can we help you?<span *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].errors?.['required']" class="text-danger"> *</span></label>
                                     <textarea name="" id="" cols="30" rows="5" class="form-control form-control-lg " formControlName="message"
                                         placeholder="Message"></textarea>
-                                        <div class="text-danger">
+                                        <div class="text-danger text-start">
                                             <span *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].errors?.['required']">
                                                 <i class="bi bi-star-fill text-danger"></i> Please Enter Your Thoughts.
                                             </span>
                                         </div>
                                 </div>
 
-                                <div class="row mt-4">
-                                    <label for="">Are you sure</label>
+                                <div class="row mt-4 p-2">
+                                    <label for="" class="text-start" [class.text-danger]="contactForm.controls['role'].touched && contactForm.controls['role'].errors?.['required']">Are you sure<span *ngIf="contactForm.controls['role'].touched && contactForm.controls['role'].errors?.['required']" class="text-danger"> *</span></label>
                                     <select class="form-control form-control-lg " formControlName="role">
                                         <option value="" disabled selected>Please Select</option>
                                         <option value="Broker">Broker</option>
@@ -72,14 +72,14 @@
                                         <option value="Carrier">Carrier</option>
                                         <option value="Other">Other</option>
                                     </select>
-                                    <div class="text-danger">
+                                    <div class="text-danger text-start">
                                         <span *ngIf="contactForm.controls['role'].touched && contactForm.controls['role'].errors?.['required']">
                                             <i class="bi bi-star-fill text-danger"></i> Please Select who you are.
                                         </span>
                                     </div>
                                 </div>
 
-                                <div class="mt-4">
+                                <div class="mt-4 p-2">
                                     <span>CarrierSource is committed to protecting and respecting your privacy, and we
                                         ll only use your personal information to administer your account and to provide
                                         the products and services you requested from us. From time to time, we would like to
@@ -91,7 +91,7 @@
                                         <label class="form-check-label" for="exampleCheck1">I agree to receive other
                                             communications from CarrierSource.</label>
                                     </div>
-                                    <div class="text-danger">
+                                    <div class="text-danger text-start">
                                         <span *ngIf="contactForm.controls['isSubscribed'].touched && contactForm.controls['isSubscribed'].errors?.['required']">
                                             <i class="bi bi-star-fill text-danger"></i> Please agree.
                                         </span>

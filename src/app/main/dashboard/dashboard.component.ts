@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServicesService } from '../../myservices/services.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition , MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,11 +23,12 @@ export class DashboardComponent {
   passwordForm: FormGroup;
   emailForm: FormGroup;
   userRole: string = '';
+  emailAddresses : any = [];
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   private _snackBar = inject(MatSnackBar);
 
-  constructor(private http: ServicesService, private fb: FormBuilder, private router: Router) {
+  constructor(private http: ServicesService, private fb: FormBuilder, private router: Router, private activeRoute:ActivatedRoute) {
     // Initialize Forms
     this.userInfoForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -56,6 +57,7 @@ export class DashboardComponent {
         this.router.navigate(['/login']);
       }
     });
+    this.getEmail();
   }
 
   openSnackBar(message: string) {
@@ -127,10 +129,39 @@ export class DashboardComponent {
   }
 
   onSubmitEmail() {
-    // if (this.emailForm.valid) {
-    //   this.http.addUserEmail(this.emailForm.value).subscribe(() => {
-    //     alert('Email added successfully!');
-    //   });
-    // }
+    this.http.addEmail(this.emailForm.value).subscribe((res:any)=>{
+      console.log(res.data);
+      
+      if(res.success){
+        this.getEmail(); 
+        this.openSnackBar(res.message);
+        this.emailForm.reset();
+      }
+    },
+    (err:any)=>{
+      this.openSnackBar(err.message); 
+    }
+  )
   }
+
+  getEmail() {
+    this.http.getAllEmail().subscribe((res: any) => {
+      this.emailAddresses = res.emailAddresses;
+    })
+  }
+
+  setPrimaryEmail(id:any){
+    this.http.setPrimaryEmail(id).subscribe((res:any)=>{
+      if(res.success){
+        this.getEmail(); 
+        this.openSnackBar(res.message);
+      }
+    },
+    (err:any)=>{
+      this.openSnackBar(err.message); 
+    }
+  )
+  }
+
+ 
 }

@@ -13,6 +13,7 @@ import { activatGuard } from './activat.guard';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { WriteReviewComponent } from './pages/write-review/write-review.component';
 import { ContactUsComponent } from './blog/contact-us/contact-us.component';
+import { VerifyOtherComponent } from './authentication/verify-other/verify-other.component';
 
 export const routes: Routes = [
     {
@@ -98,6 +99,12 @@ export const routes: Routes = [
    {
     path:'contact-us',
     component:ContactUsComponent,
+    pathMatch: 'full'
+   },
+
+   {
+    path:'verify-others-email',
+    component:VerifyOtherComponent,
     pathMatch: 'full'
    },
 

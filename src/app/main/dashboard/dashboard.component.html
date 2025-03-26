@@ -68,6 +68,34 @@
                 </form>
             </mat-card>
             
+            @for (item of emailAddresses; track $index) {
+                @if(item.isPrimary){
+                    <mat-card class="p-4 mt-4">
+                        <div class="form-group d-flex align-items-center" style="height: 40px;">
+                           <h6><b>{{item.email}} </b><span class="text-success"> - {{item.isPrimary ? 'Primary' : ''}} </span></h6>
+                        </div>
+                    </mat-card>
+                }@else {
+
+                    <mat-card class="p-4 mt-4">
+                        <div class="row align-items-center" style="height: 40px;">
+                            <div class="col-11 d-flex " style="cursor: pointer;">
+                                <h6><b>{{item.email}} </b><span (click)="setPrimaryEmail(item._id)" class="{{item.isVerified ? 'text-primary' : 'text-secondary'}}"> - {{item.isVerified ? 'Make Primary' : 'Pending Verification'}}</span></h6>
+                            </div>
+                            <div class="col-1 text-right">
+                                <button class="btn btn-link p-0" aria-label="Delete">
+                                    <i class="bi bi-trash-fill text-danger" style="font-size: 24px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card>
+
+                }
+          
+
+         
+        }
+            
             <form [formGroup]="emailForm" (ngSubmit)="onSubmitEmail()">
                 <mat-card class="p-4 mt-4">
                     <h5><b>Add Email Address</b></h5>

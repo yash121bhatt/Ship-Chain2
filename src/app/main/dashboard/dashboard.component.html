@@ -12,15 +12,15 @@
                         <button mat-button><span>My Review</span></button>
                     </div>
                     <hr>
-                    <div class="main-div" style="cursor: pointer;"> 
+                    <div class="main-div" style="cursor: pointer;">
                         <button mat-button><span>Lists</span></button>
                     </div>
                     <hr>
                     <div class="main-div" style="cursor: pointer;">
-                        <button mat-button><span>Recently Viewed</span></button> 
+                        <button mat-button><span>Recently Viewed</span></button>
                     </div>
                     <hr>
-                    <div class="main-div" style="cursor: pointer;"> 
+                    <div class="main-div" style="cursor: pointer;">
                         <button mat-button><span>Subscription</span></button>
                     </div>
                 </div>
@@ -33,74 +33,80 @@
                     <div class="row form-group mt-4">
                         <div class="col">
                             <label class="form-label"><b>First Name</b></label>
-                            <input type="text" class="form-control" formControlName="firstName" (blur)="onSubmitUserInfo()" placeholder="First name"
-                            >
+                            <input type="text" class="form-control" formControlName="firstName"
+                                (blur)="onSubmitUserInfo()" placeholder="First name">
                         </div>
                         <div class="col">
                             <label class="form-label"><b>Last Name</b></label>
-                            <input type="text" class="form-control" formControlName="lastName" (blur)="onSubmitUserInfo()" placeholder="Last name"
-                            >
+                            <input type="text" class="form-control" formControlName="lastName"
+                                (blur)="onSubmitUserInfo()" placeholder="Last name">
                         </div>
                     </div>
                     <div class="form-group mt-4">
                         <label class="form-label"><b>Company Name</b></label>
-                        <input type="text" class="form-control" formControlName="companyName"  (blur)="onSubmitUserInfo()" placeholder="Enter Your Company Name"
-                        >
+                        <input type="text" class="form-control" formControlName="companyName"
+                            (blur)="onSubmitUserInfo()" placeholder="Enter Your Company Name">
                     </div>
                     <!-- <button type="submit" class="btn btn-primary mt-3">Update Info</button> -->
                     <button class="btn btn-primary mt-3" (click)="changePassword()">Change Password</button>
                 </mat-card>
             </form>
-            
+
             <mat-card *ngIf="showChangePassword" class="p-4 mt-4">
                 <h5><b>Change Password</b></h5>
-               
-                <form  [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
+
+                <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
                     <div class="form-group mt-4">
                         <label class="form-label"><b>New Password</b></label>
-                        <input type="password" class="form-control" formControlName="newPassword" placeholder="Enter New Password">
+                        <input type="password" class="form-control" formControlName="newPassword"
+                            placeholder="Enter New Password">
                     </div>
                     <div class="form-group mt-4">
                         <label class="form-label"><b>Confirm Password</b></label>
-                        <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+                        <input type="password" class="form-control" formControlName="confirmPassword"
+                            placeholder="Confirm Password">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit New Password</button>
                 </form>
             </mat-card>
-            
+
             @for (item of emailAddresses; track $index) {
-                @if(item.isPrimary){
-                    <mat-card class="p-4 mt-4">
-                        <div class="form-group d-flex align-items-center" style="height: 40px;">
-                           <h6><b>{{item.email}} </b><span class="text-success"> - {{item.isPrimary ? 'Primary' : ''}} </span></h6>
-                        </div>
-                    </mat-card>
-                }@else {
+            @if(item.isPrimary){
+            <mat-card class="p-4 mt-4">
+                <div class="form-group d-flex align-items-center" style="height: 40px;">
+                    <h6><b>{{item.email}} </b><span class="text-success"> - {{item.isPrimary ? 'Primary' : ''}} </span>
+                    </h6>
+                </div>
+            </mat-card>
+            }@else {
 
-                    <mat-card class="p-4 mt-4">
-                        <div class="row align-items-center" style="height: 40px;">
-                            <div class="col-11 d-flex " style="cursor: pointer;">
-                                <h6><b>{{item.email}} </b><span (click)="setPrimaryEmail(item._id)" class="{{item.isVerified ? 'text-primary' : 'text-secondary'}}"> - {{item.isVerified ? 'Make Primary' : 'Pending Verification'}}</span></h6>
-                            </div>
-                            <div class="col-1 text-right">
-                                <button class="btn btn-link p-0" aria-label="Delete">
-                                    <i class="bi bi-trash-fill text-danger" style="font-size: 24px;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </mat-card>
+            <mat-card class="p-4 mt-4">
+                <div class="row align-items-center" style="height: 40px;">
+                    <div class="col-11 d-flex " style="cursor: pointer;">
+                        <h6><b>{{item.email}} </b><span (click)="setPrimaryEmail(item._id)"
+                                class="{{item.isVerified ? 'text-primary' : 'text-secondary'}}"> - {{item.isVerified ?
+                                'Make Primary' : 'Pending Verification'}}</span></h6>
+                    </div>
+                    <div class="col-1 text-right">
+                        <button class="btn btn-link p-0" aria-label="Delete" (click)="deleteEmail(item._id)">
+                            <i class="bi bi-trash-fill text-danger" style="font-size: 24px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </mat-card>
 
-                }
-          
+            }
 
-         
-        }
-            
+
+
+            }
+
             <form [formGroup]="emailForm" (ngSubmit)="onSubmitEmail()">
                 <mat-card class="p-4 mt-4">
                     <h5><b>Add Email Address</b></h5>
                     <div class="form-group d-flex align-items-center" style="height: 40px;">
-                        <input type="email" class="form-control" formControlName="email" placeholder="Enter Email Address">
+                        <input type="email" class="form-control" formControlName="email"
+                            placeholder="Enter Email Address">
                         <button type="submit" class="btn btn-primary ml-2">Add Email</button>
                     </div>
                 </mat-card>

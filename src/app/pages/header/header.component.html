@@ -1,8 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <img matTooltip="Angular Logo" src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo"
-      style="height: 40px; margin-right: 16px;">
-      <h1>Ship-Chain</h1>
+    <img matTooltip="Angular Logo" src="shipChainlogo.svg" alt="Angular Logo" style="height: 40px; margin-right: 16px;">
+    <h1>Ship-Chain</h1>
     <span class="example-spacer"></span>
     <!-- <div class="search-container position-relative"
       <form class="d-flex align-items-center">
@@ -20,28 +19,24 @@
 
       </form>
     </div> -->
-    
+
     <div class="ng-autocomplete">
-      <ng-autocomplete 
-      [data]="countries"
-      [searchKeyword]="keyword"
-      (selected)="selected($event)"
-      [itemTemplate]="itemTemplate" 
-      [notFoundTemplate]="notFoundTemplate" >
+      <ng-autocomplete [data]="countries" [searchKeyword]="keyword" (selected)="selected($event)"
+        [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
 
       </ng-autocomplete>
-      
+
       <h1>{{searchName}}</h1>
 
       <ng-template #itemTemplate let-item>
-          <a [innerHTML]="item.name"></a>
+        <a [innerHTML]="item.name"></a>
       </ng-template>
 
       <ng-template #notFoundTemplate let-notFound>
-          <div [innerHTML]="notFound"></div>
+        <div [innerHTML]="notFound"></div>
       </ng-template>
 
-  </div>
+    </div>
 
     <span class="example-spacer"></span>
     <button mat-button routerLink="/review">Write-a-review</button>

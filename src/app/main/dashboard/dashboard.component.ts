@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServicesService } from '../../myservices/services.service';
-import { MatSnackBar, MatSnackBarHorizontalPosition , MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -23,12 +23,12 @@ export class DashboardComponent {
   passwordForm: FormGroup;
   emailForm: FormGroup;
   userRole: string = '';
-  emailAddresses : any = [];
+  emailAddresses: any = [];
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   private _snackBar = inject(MatSnackBar);
 
-  constructor(private http: ServicesService, private fb: FormBuilder, private router: Router, private activeRoute:ActivatedRoute) {
+  constructor(private http: ServicesService, private fb: FormBuilder, private router: Router, private activeRoute: ActivatedRoute) {
     // Initialize Forms
     this.userInfoForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -50,9 +50,9 @@ export class DashboardComponent {
     this.http.getUserProfile().subscribe((res: any) => {
       this.userRole = res.user.role;
       this.getRoleUsers(this.userRole);
-    }, (err:any)=>{
+    }, (err: any) => {
       console.log(err);
-      if(err.status == 401){
+      if (err.status == 401) {
         localStorage.removeItem('authToken');
         this.router.navigate(['/login']);
       }
@@ -98,11 +98,11 @@ export class DashboardComponent {
 
   onSubmitUserInfo() {
     console.log(this.userInfoForm.value);
-    
+
     this.http.updateShipper(this.userInfoForm.value).subscribe((res: any) => {
       if (res.success) {
-        console.log('message  --- >',res.message);
-        
+        console.log('message  --- >', res.message);
+
         this.openSnackBar(res.message);
       }
     });
@@ -111,37 +111,37 @@ export class DashboardComponent {
   onSubmitPassword() {
     const { newPassword, confirmPassword } = this.passwordForm.value;
     if (newPassword !== confirmPassword) {
-      
-     return this.openSnackBar('Passwords do not match'); 
-         
+
+      return this.openSnackBar('Passwords do not match');
+
     }
-    
+
     this.http.changePassword(this.passwordForm.value).subscribe((res: any) => {
       if (res.success) {
         this.openSnackBar(res.message);
       }
     },
-    (err:any)=>{
-      this.openSnackBar(err.message); 
-    }
-  )
+      (err: any) => {
+        this.openSnackBar(err.message);
+      }
+    )
 
   }
 
   onSubmitEmail() {
-    this.http.addEmail(this.emailForm.value).subscribe((res:any)=>{
+    this.http.addEmail(this.emailForm.value).subscribe((res: any) => {
       console.log(res.data);
-      
-      if(res.success){
-        this.getEmail(); 
+
+      if (res.success) {
+        this.getEmail();
         this.openSnackBar(res.message);
         this.emailForm.reset();
       }
     },
-    (err:any)=>{
-      this.openSnackBar(err.message); 
-    }
-  )
+      (err: any) => {
+        this.openSnackBar(err.message);
+      }
+    )
   }
 
   getEmail() {
@@ -150,18 +150,31 @@ export class DashboardComponent {
     })
   }
 
-  setPrimaryEmail(id:any){
-    this.http.setPrimaryEmail(id).subscribe((res:any)=>{
-      if(res.success){
-        this.getEmail(); 
+  setPrimaryEmail(id: any) {
+    this.http.setPrimaryEmail(id).subscribe((res: any) => {
+      if (res.success) {
+        this.getEmail();
         this.openSnackBar(res.message);
       }
     },
-    (err:any)=>{
-      this.openSnackBar(err.message); 
-    }
-  )
+      (err: any) => {
+        this.openSnackBar(err.message);
+      }
+    )
   }
 
- 
+  deleteEmail(id: string) {
+    this.http.deleteEmail(id).subscribe((res: any) => {
+      if (res.success) {
+        this.getEmail();
+        this.openSnackBar(res.message);
+      }
+    },
+      (err: any) => {
+        this.openSnackBar(err.message);
+      }
+    )
+  }
+
+
 }

@@ -51,51 +51,55 @@ export class ServicesService {
   }
 
   getStateList(params: any) {
-    return this.http.get('https://api-rk-geographical.onrender.com/api/states?limit=200',{params});
+    return this.http.get('https://api-rk-geographical.onrender.com/api/states?limit=200', { params });
   }
 
-  getCityList(params : any) {
-    return this.http.get('https://api-rk-geographical.onrender.com/api/cities?limit=200',{params});
+  getCityList(params: any) {
+    return this.http.get('https://api-rk-geographical.onrender.com/api/cities?limit=200', { params });
   }
 
   assignRole(data: any) {
     return this.http.post('https://api-rk-geographical.onrender.com/api/auth/assign-role', data)
   }
 
-  shipperProfile() {  
+  shipperProfile() {
     return this.http.get('https://api-rk-geographical.onrender.com/api/shippers/me');
   }
 
-  carrierProfile() {  
+  carrierProfile() {
     return this.http.get('https://api-rk-geographical.onrender.com/api/carriers/me');
   }
 
-  changePassword(data:any){
-    return this.http.post('https://api-rk-geographical.onrender.com/api/auth/change-password',data)
+  changePassword(data: any) {
+    return this.http.post('https://api-rk-geographical.onrender.com/api/auth/change-password', data)
   }
 
-  updateShipper(data:any){  
-    return this.http.put('https://api-rk-geographical.onrender.com/api/shippers/profile-update',data);
+  updateShipper(data: any) {
+    return this.http.put('https://api-rk-geographical.onrender.com/api/shippers/profile-update', data);
   }
 
   reviewSearch(params: any) {
-    return this.http.get('https://api-rk-geographical.onrender.com/api/external/carrier-search-for-review', {params});
+    return this.http.get('https://api-rk-geographical.onrender.com/api/external/carrier-search-for-review', { params });
   }
 
-  getAllEmail(){
+  getAllEmail() {
     return this.http.get('https://api-rk-geographical.onrender.com/api/email-address');
   }
 
-  addEmail(data:any){
-    return this.http.post('https://api-rk-geographical.onrender.com/api/email-address',data)
+  addEmail(data: any) {
+    return this.http.post('https://api-rk-geographical.onrender.com/api/email-address', data)
   }
 
-  VerifyOthersEmailAddress(data:any){
-    return this.http.post('https://api-rk-geographical.onrender.com/api/auth/verify-others-email',data);
+  VerifyOthersEmailAddress(data: any) {
+    return this.http.post('https://api-rk-geographical.onrender.com/api/auth/verify-others-email', data);
   }
 
-  setPrimaryEmail(id:any){
-    return this.http.put(`https://api-rk-geographical.onrender.com/api/email-address/${id}`,{});
+  setPrimaryEmail(id: any) {
+    return this.http.put(`https://api-rk-geographical.onrender.com/api/email-address/${id}`, {});
+  }
+
+  deleteEmail(id: any) {
+    return this.http.delete(`https://api-rk-geographical.onrender.com/api/email-address/${id}`, {});
   }
 
 }

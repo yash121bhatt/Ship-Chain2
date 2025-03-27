@@ -14,102 +14,134 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { WriteReviewComponent } from './pages/write-review/write-review.component';
 import { ContactUsComponent } from './blog/contact-us/contact-us.component';
 import { VerifyOtherComponent } from './authentication/verify-other/verify-other.component';
+import { AppComponent } from './app.component';
+import { TableComponent } from './main/table/table.component';
+import { MainComponent } from './blog/main/main.component';
+import { LayoutComponent } from './main/layout/layout.component';
+import { AboutComponent } from './blog/about/about.component';
+import { BlogComponent } from './blog/blog/blog.component';
 
 export const routes: Routes = [
-    {
-       path: '',
-       loadComponent: () => import('./main/table/table.component').then(m => m.TableComponent),
-      
-    },
-      
-    {
-       path: 'login',
-       component : LoginComponent,
-       pathMatch: 'full',
-    },
+   {
+      path: '',
+      component: LayoutComponent,
+      children: [
+         {
+            path: '',
+            component: TableComponent,
+            pathMatch: 'full'
+         },
 
-    {
-      path: 'my-profile',
-      component : ProfileComponent,
-      pathMatch: 'full',
-      canActivate : [activatGuard]
+         {
+            path: 'carrier-list/:slug',
+            component: CarrierListComponent,
+            pathMatch: 'full'
+         },
+         {
+            path: 'login',
+            component: LoginComponent,
+            pathMatch: 'full',
+         },
+
+         {
+            path: 'my-profile',
+            component: ProfileComponent,
+            pathMatch: 'full',
+            canActivate: [activatGuard]
+         },
+
+         {
+            path: 'dashboard',
+            component: DashboardComponent,
+            pathMatch: 'full',
+            canActivate: [activatGuard]
+         },
+
+         {
+            path: 'register',
+            component: RegisterComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'forgot-password',
+            component: ForgotPasswordComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'reset-password',
+            component: ResetPasswordComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'verification',
+            component: VerifactionComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'verify',
+            component: VerifyComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'forgot-password-email-send',
+            component: ForgotEmailSendComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'carrier-detail',
+            component: CarrierDetailsComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'review',
+            component: WriteReviewComponent,
+            pathMatch: 'full'
+         },
+
+
+
+         {
+            path: 'verify-others-email',
+            component: VerifyOtherComponent,
+            pathMatch: 'full'
+         },
+
+      ]
+
    },
 
    {
-      path: 'dashboard',
-      component : DashboardComponent,
-      pathMatch: 'full',
-      canActivate : [activatGuard]
+      path: 'company',
+      component: MainComponent,
+      children: [
+         {
+            path: 'contact-us',
+            component: ContactUsComponent,
+            pathMatch: 'full'
+         },
+         {
+            path: 'about',
+            component: AboutComponent,
+            pathMatch: 'full'
+         },
+         {
+            path: 'blog',
+            component: BlogComponent,
+            pathMatch: 'full'
+         }
+      ]
    },
 
-    {
-        path: 'register',
-        component : RegisterComponent,
-        pathMatch: 'full'
-     },
 
-     {
-        path: 'forgot-password',
-        component : ForgotPasswordComponent,
-        pathMatch: 'full'
-     },
-
-     {
-      path: 'reset-password',
-      component : ResetPasswordComponent,
-      pathMatch: 'full'
-   },
-
-     {
-       path : 'verification',
-       component : VerifactionComponent,
-       pathMatch : 'full'
-     },
-
-     {
-        path : 'verify',
-        component : VerifyComponent,
-        pathMatch : 'full'
-      },
-
-      {
-         path : 'forgot-password-email-send',
-         component : ForgotEmailSendComponent,
-         pathMatch : 'full'
-       },
-
-    {
-        path: 'carrier-list/:slug',
-        component:CarrierListComponent,
-        pathMatch: 'full'
-    },
-
-    {
-        path:'carrier-detail',
-        component:CarrierDetailsComponent,
-        pathMatch: 'full'
-    },
-
-    {
-      path:'review',
-      component:WriteReviewComponent,
-      pathMatch: 'full'
-    },
-
-   {
-    path:'contact-us',
-    component:ContactUsComponent,
-    pathMatch: 'full'
-   },
-
-   {
-    path:'verify-others-email',
-    component:VerifyOtherComponent,
-    pathMatch: 'full'
-   },
-
-    {
-        path:'**',
-        redirectTo: '',
-    }
+   //    {
+   //       path: '**',
+   //       redirectTo: '',
+   //    }
 ];

@@ -14,7 +14,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 })
 export class HeaderComponent {
 
-  searchName !:string
+  searchName !: string
   keyword: string = 'name';
 
   public countries = [
@@ -52,7 +52,7 @@ export class HeaderComponent {
     this.router.navigate(['/']);
   }
 
-  selected(item:any){
+  selected(item: any) {
     this.searchName = item.searchName
   }
 

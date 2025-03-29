@@ -11,7 +11,11 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   contactUs(data: any) {
-    return this.http.post( this.baseUrl + "/api/contact", data)
+    return this.http.post(this.baseUrl + "/api/contact", data)
+  }
+
+  blogPage(params: any) {
+    return this.http.get(this.baseUrl + "/api/blogs/", { params })
   }
 
 }

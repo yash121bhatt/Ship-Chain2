@@ -20,6 +20,9 @@ import { MainComponent } from './blog/main/main.component';
 import { LayoutComponent } from './main/layout/layout.component';
 import { AboutComponent } from './blog/about/about.component';
 import { BlogComponent } from './blog/blog/blog.component';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { BlogListComponent } from './admin/blog-list/blog-list.component';
 
 export const routes: Routes = [
    {
@@ -139,6 +142,14 @@ export const routes: Routes = [
       ]
    },
 
+   {
+      path: "admin",
+      component: AdminLayoutComponent,
+      children: [
+         { path: "dashboard", component: AdminDashboardComponent },
+         { path: "blog-list", component: BlogListComponent },
+      ]
+   }
 
    //    {
    //       path: '**',

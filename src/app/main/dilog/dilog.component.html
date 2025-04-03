@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Save List</h2>
+<hr>
+<!-- <mat-dialog-content>
+    Would you like to delete cat.jpeg?
+</mat-dialog-content> -->
+<span class="example-list-section">
+    <ul style="list-style: none;">
+
+        <li>
+            <mat-checkbox [checked]="">
+                My List
+            </mat-checkbox>
+        </li>
+
+        <li>
+            <mat-checkbox [checked]="">
+                Example list
+            </mat-checkbox>
+        </li>
+
+    </ul>
+
+</span>
+<hr>
+
+
+<form [formGroup]="addListForm" (ngSubmit)="addList()" class="d-flex px-2 py-4 mb-2 gap-1">
+    <input type="text" class="form-control w-75" formControlName="name">
+    <button style="border-radius: 0;" mat-flat-button>Create List</button>
+</form>

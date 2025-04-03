@@ -23,6 +23,8 @@ import { BlogComponent } from './blog/blog/blog.component';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { BlogListComponent } from './admin/blog-list/blog-list.component';
+import { AddBlogComponent } from './admin/add-blog/add-blog.component';
+import { GetListComponent } from './main/main-profile/get-list/get-list.component';
 
 export const routes: Routes = [
    {
@@ -146,8 +148,28 @@ export const routes: Routes = [
       path: "admin",
       component: AdminLayoutComponent,
       children: [
-         { path: "dashboard", component: AdminDashboardComponent },
-         { path: "blog-list", component: BlogListComponent },
+         {
+            path: "dashboard",
+            component: AdminDashboardComponent,
+            pathMatch: 'full'
+
+         },
+         {
+            path: "blog-list",
+            component: BlogListComponent,
+            pathMatch: 'full'
+         },
+         {
+            path: "add-blog",
+            component: AddBlogComponent,
+            pathMatch: 'full'
+         },
+         {
+            path: 'list-blog',
+            component: GetListComponent,
+            pathMatch: 'full'
+         }
+
       ]
    }
 

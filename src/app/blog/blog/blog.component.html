@@ -14,177 +14,37 @@
                 </div>
             </div>
             <div style="margin-left: 5px;">
+
                 <div class="row mt-4">
-                    <div class="col-4">
+                    @for (getCard of getBlogCard; track $index) {
+                    <div class="col-4 mt-4">
                         <div>
+
                             <mat-card class="example-card" appearance="outlined">
                                 <mat-card-header>
                                     <div mat-card-avatar
                                         style="background-size: cover; background-image: image-set('shipChainlogo.png'); ">
                                     </div>
-                                    <mat-card-title>My Truck</mat-card-title>
-                                    <mat-card-subtitle>Truck Type</mat-card-subtitle>
+                                    <mat-card-title>{{getCard.title}}</mat-card-title>
+                                    <mat-card-subtitle>{{getCard.author.firstName}}
+                                        {{getCard.author.lastName}}</mat-card-subtitle>
                                 </mat-card-header>
-                                <img mat-card-image
-                                    src="https://img.freepik.com/free-photo/vehicle-move_23-2151846005.jpg?t=st=1743079577~exp=1743083177~hmac=a880e1b41b65e48e2cd9bfaa475f75342291ac23fa1b23142d88ca06b45b2a35&w=900"
-                                    alt="Photo of a My Truck">
+                                <img mat-card-image src="{{getCard.featuredImage}}" alt="Photo of a My Truck">
                                 <mat-card-content class="mt-2">
                                     <p style="font-size: 20px; font-weight: 500; ">
-                                        The Premier Trucking Insurance Companies in the USA
+                                        {{getCard.content}}
                                     </p>
                                 </mat-card-content>
-                                <!-- <mat-card-actions>
-                                <button mat-button>LIKE</button>
-                                <button mat-button>SHARE</button>
-                            </mat-card-actions> -->
                             </mat-card>
+
                         </div>
 
 
                     </div>
-                    <div class="col-4">
-                        <div>
-                            <mat-card class="example-card" appearance="outlined">
-                                <mat-card-header>
-                                    <div mat-card-avatar
-                                        style="background-size: cover; background-image: image-set('shipChainlogo.png'); ">
-                                    </div>
-                                    <mat-card-title>My Truck</mat-card-title>
-                                    <mat-card-subtitle>Truck Type</mat-card-subtitle>
-                                </mat-card-header>
-                                <img mat-card-image
-                                    src="https://img.freepik.com/free-photo/vehicle-move_23-2151846038.jpg?t=st=1743079685~exp=1743083285~hmac=676dd607fbf307ae6180382a203cf30209ff34eb4ba6e7fc8dfe8a4fc2745f5e&w=900"
-                                    alt="Photo of a My Truck">
-                                <mat-card-content class="mt-2">
-                                    <p style="font-size: 20px; font-weight: 500; ">
-                                        Trucking Industry Trends, Statistics, & Forecast in 2024
-                                    </p>
-                                </mat-card-content>
-                                <!-- <mat-card-actions>
-                                <button mat-button>LIKE</button>
-                                <button mat-button>SHARE</button>
-                            </mat-card-actions> -->
-                            </mat-card>
-                        </div>
-
-
-                    </div>
-
-                    <div class="col-4">
-                        <div>
-                            <mat-card class="example-card" appearance="outlined">
-                                <mat-card-header>
-                                    <div mat-card-avatar
-                                        style="background-size: cover; background-image: image-set('shipChainlogo.png'); ">
-                                    </div>
-                                    <mat-card-title>My Truck</mat-card-title>
-                                    <mat-card-subtitle>Truck Type</mat-card-subtitle>
-                                </mat-card-header>
-                                <img mat-card-image
-                                    src="https://media.istockphoto.com/id/1310856881/photo/powerful-white-big-rig-long-haul-industrial-semi-truck-transporting-goods-in-refrigerator.jpg?s=1024x1024&w=is&k=20&c=HDIokzKFT1puaXDPyRvmO3BnXeRDJQGQgcXSC7ZjSQs="
-                                    alt="Photo of a My Truck">
-                                <mat-card-content class="mt-2">
-                                    <p style="font-size: 20px; font-weight: 500; ">
-                                        Building Strong Relationships with Carriers: Tips for Shippers
-                                    </p>
-                                </mat-card-content>
-                                <!-- <mat-card-actions>
-                                <button mat-button>LIKE</button>
-                                <button mat-button>SHARE</button>
-                            </mat-card-actions> -->
-                            </mat-card>
-                        </div>
-
-
-                    </div>
+                    }
 
                 </div>
 
-                <div class="row mt-4">
-                    <div class="col-4">
-                        <div>
-                            <mat-card class="example-card" appearance="outlined">
-                                <mat-card-header>
-                                    <div mat-card-avatar
-                                        style="background-size: cover; background-image: image-set('shipChainlogo.png'); ">
-                                    </div>
-                                    <mat-card-title>My Truck</mat-card-title>
-                                    <mat-card-subtitle>Truck Type</mat-card-subtitle>
-                                </mat-card-header>
-                                <img mat-card-image
-                                    src="https://img.freepik.com/free-photo/vehicle-move_23-2151846038.jpg?t=st=1743079685~exp=1743083285~hmac=676dd607fbf307ae6180382a203cf30209ff34eb4ba6e7fc8dfe8a4fc2745f5e&w=900"
-                                    alt="Photo of a My Truck">
-                                <mat-card-content class="mt-2">
-                                    <p style="font-size: 20px; font-weight: 500; ">
-                                        5 Most Important Questions to Ask Before Hiring a Trucking Company
-                                    </p>
-                                </mat-card-content>
-                                <!-- <mat-card-actions>
-                                <button mat-button>LIKE</button>
-                                <button mat-button>SHARE</button>
-                            </mat-card-actions> -->
-                            </mat-card>
-                        </div>
-
-
-                    </div>
-                    <div class="col-4">
-                        <div>
-                            <mat-card class="example-card" appearance="outlined">
-                                <mat-card-header>
-                                    <div mat-card-avatar
-                                        style="background-size: cover; background-image: image-set('shipChainlogo.png'); ">
-                                    </div>
-                                    <mat-card-title>My Truck</mat-card-title>
-                                    <mat-card-subtitle>Truck Type</mat-card-subtitle>
-                                </mat-card-header>
-                                <img mat-card-image
-                                    src="https://media.istockphoto.com/id/1310856881/photo/powerful-white-big-rig-long-haul-industrial-semi-truck-transporting-goods-in-refrigerator.jpg?s=1024x1024&w=is&k=20&c=HDIokzKFT1puaXDPyRvmO3BnXeRDJQGQgcXSC7ZjSQs="
-                                    alt="Photo of a My Truck">
-                                <mat-card-content class="mt-2">
-                                    <p style="font-size: 20px; font-weight: 500; ">
-                                        What is Fleet Management? Purpose, Benefits & More
-                                    </p>
-                                </mat-card-content>
-                                <!-- <mat-card-actions>
-                                <button mat-button>LIKE</button>
-                                <button mat-button>SHARE</button>
-                            </mat-card-actions> -->
-                            </mat-card>
-                        </div>
-
-
-                    </div>
-
-                    <div class="col-4">
-                        <div>
-                            <mat-card class="example-card" appearance="outlined">
-                                <mat-card-header>
-                                    <div mat-card-avatar
-                                        style="background-size: cover; background-image: image-set('shipChainlogo.png'); ">
-                                    </div>
-                                    <mat-card-title>My Truck</mat-card-title>
-                                    <mat-card-subtitle>Truck Type</mat-card-subtitle>
-                                </mat-card-header>
-                                <img mat-card-image
-                                    src="https://img.freepik.com/free-photo/vehicle-move_23-2151846005.jpg?t=st=1743079577~exp=1743083177~hmac=a880e1b41b65e48e2cd9bfaa475f75342291ac23fa1b23142d88ca06b45b2a35&w=900"
-                                    alt="Photo of a My Truck">
-                                <mat-card-content class="mt-2">
-                                    <p style="font-size: 20px; font-weight: 500; ">
-                                        What is Long-Haul Trucking? Challenges and Solutions
-                                    </p>
-                                </mat-card-content>
-                                <!-- <mat-card-actions>
-                                <button mat-button>LIKE</button>
-                                <button mat-button>SHARE</button>
-                            </mat-card-actions> -->
-                            </mat-card>
-                        </div>
-
-
-                    </div>
-
-                </div>
             </div>
 
 

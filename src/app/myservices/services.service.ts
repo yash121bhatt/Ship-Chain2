@@ -102,4 +102,22 @@ export class ServicesService {
     return this.http.delete(`https://api-rk-geographical.onrender.com/api/email-address/${id}`, {});
   }
 
+  // Dashboard save list
+
+  getAllList() {
+    return this.http.get('https://api-rk-geographical.onrender.com/api/lists');
+  }
+
+  deleteList(id: any) {
+    return this.http.delete(`https://api-rk-geographical.onrender.com/api/lists/${id}`);
+  }
+
+  addList(data: any) {
+    return this.http.post('https://api-rk-geographical.onrender.com/api/lists', data)
+  }
+
+  addCarrierInList(list: any, carrier: any) {
+    return this.http.post(`https://api-rk-geographical.onrender.com/api/lists/${list}/carriers/${carrier}`, {});
+  }
+
 }

@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="d-flex gap-1">
-                <a routerLink="/">Trucking Companies</a> | <a routerLink="/carrier-list/{{getSlug}}">{{getCountryTitle}}</a>
+                <a routerLink="/">Trucking Companies</a> | <a
+                    routerLink="/carrier-list/{{getSlug}}">{{getCountryTitle}}</a>
             </div>
             <div class="col-3">
                 <mat-card class="mt-4">
@@ -33,47 +34,49 @@
 
                 <p><b>Truck Type</b></p>
                 @for (truckType of truckTypes; track $index) {
-                <mat-checkbox class="example-margin" value="{{truckType.id}}" >{{truckType.name}}</mat-checkbox>
+                <mat-checkbox class="example-margin" value="{{truckType.id}}">{{truckType.name}}</mat-checkbox>
                 }
                 <hr>
                 <p><b>Shipment Type</b></p>
-                
+
                 @for (shipmentType of shipmentTypes; track $index) {
                 <mat-checkbox class="example-margin" value="{{shipmentType.id}}">{{shipmentType.name}}</mat-checkbox>
                 }
 
                 <hr>
                 <p><b>Specialized Service</b></p>
-                
+
                 @for (specializedService of specializedServices; track $index) {
-                <mat-checkbox class="example-margin" value="{{specializedService.id}}">{{specializedService.name}}</mat-checkbox>
+                <mat-checkbox class="example-margin"
+                    value="{{specializedService.id}}">{{specializedService.name}}</mat-checkbox>
                 }
                 <hr>
                 <p><b>Freight</b></p>
-                
+
                 @for (freight of freights; track $index) {
                 <mat-checkbox class="example-margin" value="{{freight.id}}">{{freight.name}}</mat-checkbox>
                 }
-            
+
 
                 <hr>
                 <p><b>Operation</b></p>
-               
+
                 @for (operation of operations; track $index) {
 
-                    <mat-checkbox class="example-margin" value="{{operation.id}}">{{operation.name}}</mat-checkbox>
-                    
+                <mat-checkbox class="example-margin" value="{{operation.id}}">{{operation.name}}</mat-checkbox>
+
                 }
-                
-               
+
+
 
 
                 <hr>
                 <p><b>Insurance Minimum</b></p>
-                
+
                 <mat-radio-group name="flavors">
                     @for (insuranceMini of insuranceMinimum; track $index) {
-                    <mat-radio-button value="chocolate" checked="true" value="{{insuranceMini.id}}" >{{insuranceMini.name}}</mat-radio-button>
+                    <mat-radio-button value="chocolate" checked="true"
+                        value="{{insuranceMini.id}}">{{insuranceMini.name}}</mat-radio-button>
                     }
                 </mat-radio-group>
 
@@ -82,7 +85,8 @@
 
                 <mat-radio-group name="flavors">
                     @for (authorityMaintained of authorityMaintained; track $index) {
-                    <mat-radio-button value="chocolate" checked="true" value="{{authorityMaintained.id}}" >{{authorityMaintained.name}}</mat-radio-button>
+                    <mat-radio-button value="chocolate" checked="true"
+                        value="{{authorityMaintained.id}}">{{authorityMaintained.name}}</mat-radio-button>
                     }
                 </mat-radio-group>
 
@@ -97,7 +101,8 @@
             </div>
             <div class="col-9 p-4">
                 <h4>Top Trucking Companies in <b>{{getCountryTitle}}</b></h4>
-                <p>The top trucking companies in <span><b>{{getCountryTitle}}</b></span> based on real broker and shipper reviews that have been
+                <p>The top trucking companies in <span><b>{{getCountryTitle}}</b></span> based on real broker and
+                    shipper reviews that have been
                     moderated and
                     verified by CarrierSource to ensure the highest level of integrity. In addition to reviews, you'll
                     find
@@ -139,12 +144,12 @@
                                         @if (carrier.carrierOperation == 'A') {
                                         Interstate
                                         }@else if (carrier.carrierOperation == 'B') {
-                                            Intrastate Hazmat 
+                                        Intrastate Hazmat
                                         }@else if (carrier.carrierOperation == 'C') {
-                                            Intrastate Non-Hazmat
+                                        Intrastate Non-Hazmat
                                         }
                                     </mat-chip>
-                                       <p>N/A | USDOT {{carrier.dotNumber}}</p>
+                                    <p>N/A | USDOT {{carrier.dotNumber}}</p>
                                 </mat-card-title>
 
                             </div>
@@ -200,13 +205,15 @@
                                 <a routerLink="/carrier-detail">Read more about {{carrier.legalName}}</a>
                             </div>
                             <div class="col-6">
-                                <button mat-button><mat-icon>bookmark</mat-icon>Save Carrier</button>
-                                <button mat-button><mat-icon>edit</mat-icon>Write a Review</button>
+                                <button mat-button (click)="openDialog('0ms', '0ms')"><mat-icon>bookmark</mat-icon>Save
+                                    Carrier</button>
+                                <button mat-button><mat-icon>edit</mat-icon>Write a
+                                    Review</button>
                             </div>
                         </div>
                         <hr>
                     </mat-card>
-                }
+                    }
                 </div>
                 <ng-container *ngIf="!(carriers?.length > 0)">
                     <ngx-skeleton-loader count="15" appearance="line"></ngx-skeleton-loader>

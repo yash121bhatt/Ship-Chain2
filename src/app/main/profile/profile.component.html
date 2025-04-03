@@ -5,7 +5,8 @@
             <p>To finish signing up, are you a...</p>
             <mat-card-content class="d-flex justify-content-center">
                 <form [formGroup]="carrierForm" (ngSubmit)="onSubmit()">
-                    <mat-radio-group formControlName="role" aria-labelledby="example-radio-group-label" class="example-radio-group">
+                    <mat-radio-group formControlName="role" aria-labelledby="example-radio-group-label"
+                        class="example-radio-group">
                         <mat-radio-button class="example-radio-button mt-2" value="broker">
                             <h6>Broker</h6>
                             <span>I work for a company that arranges freight transportation</span>
@@ -33,23 +34,31 @@
                     </mat-radio-group>
 
                     <div class="d-flex gap-2 flex-column justify-content-center mt-2">
-                        <ng-container *ngIf="carrierForm.get('role')?.value === 'shipper' || carrierForm.get('role')?.value === 'dispatcher' || carrierForm.get('role')?.value === 'driver' || carrierForm.get('role')?.value === 'seller'">
-                            <input type="text" formControlName="companyName" class="form-control" placeholder="Enter your company name">
-                            <select formControlName="country" class="form-select" style="overflow-y: auto;" aria-label="Default select example">
+                        <ng-container
+                            *ngIf="carrierForm.get('role')?.value === 'shipper' || carrierForm.get('role')?.value === 'dispatcher' || carrierForm.get('role')?.value === 'driver' || carrierForm.get('role')?.value === 'seller'">
+                            <input type="text" formControlName="companyName" class="form-control"
+                                placeholder="Enter your company name">
+                            <select formControlName="country" class="form-select" style="overflow-y: auto;"
+                                aria-label="Default select example">
                                 <option value="" selected>Select Country</option>
-                                <option *ngFor="let country of countries" [value]="country.iso2">{{country.name}}</option>
+                                <option *ngFor="let country of countries" [value]="country.iso2">{{country.name}}
+                                </option>
                             </select>
-                            <select formControlName="state" class="form-select" style="overflow-y: auto;" aria-label="Default select example">
+                            <select formControlName="state" class="form-select" style="overflow-y: auto;"
+                                aria-label="Default select example">
                                 <option value="" selected>Select State</option>
                                 <option *ngFor="let state of states" [value]="state.state_code">{{state.name}}</option>
                             </select>
-                            <select formControlName="city" class="form-select" style="overflow-y: auto;" aria-label="Default select example">
+                            <select formControlName="city" class="form-select" style="overflow-y: auto;"
+                                aria-label="Default select example">
                                 <option value="" selected>Select City</option>
                                 <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
                             </select>
                         </ng-container>
-                        <ng-container *ngIf="carrierForm.get('role')?.value === 'carrier' || carrierForm.get('role')?.value === 'broker'">
-                            <input type="number" formControlName="dotNumber" class="form-control" placeholder="Enter your DOT number">
+                        <ng-container
+                            *ngIf="carrierForm.get('role')?.value === 'carrier' || carrierForm.get('role')?.value === 'broker'">
+                            <input type="number" formControlName="dotNumber" class="form-control"
+                                placeholder="Enter your DOT number">
                         </ng-container>
                         <button type="submit" class="btn btn-primary mt-2">Submit</button>
                     </div>
@@ -58,4 +67,3 @@
         </mat-card>
     </div>
 </div>
-

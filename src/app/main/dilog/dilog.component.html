@@ -5,18 +5,19 @@
 </mat-dialog-content> -->
 <span class="example-list-section">
     <ul style="list-style: none;">
-
-        <li>
-            <mat-checkbox [checked]="">
-                My List
+        @for (s_list of saveList; track $index) {
+        <!-- <li>
+            <mat-checkbox (change)="getCheckBox($event)" [checked]="s_list.checked">
+                {{s_list.name}}
             </mat-checkbox>
-        </li>
+        </li> -->
+        }
 
-        <li>
+        <!-- <li>
             <mat-checkbox [checked]="">
                 Example list
             </mat-checkbox>
-        </li>
+        </li> -->
 
     </ul>
 

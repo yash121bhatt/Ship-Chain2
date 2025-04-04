@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ServicesService } from '../../myservices/services.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SharedService } from '../../myservices/shared.service';
 
 @Component({
   selector: 'app-dilog',
@@ -16,8 +17,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class DilogComponent {
 
   addListForm: FormGroup;
-
-  constructor(private httpApi: ServicesService, private fb: FormBuilder) {
+  carrierId: string = '';
+  saveList: any = [];
+  constructor(private httpApi: ServicesService, private Shared: SharedService, private fb: FormBuilder) {
 
     this.addListForm = this.fb.group({
       name: ['', Validators.required]
@@ -25,7 +27,14 @@ export class DilogComponent {
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.Shared.currentMessage.subscribe(message => this.carrierId = message);
+    console.log('oninit string = ', this.carrierId);
+    this.httpApi.getAllList().subscribe((res: any) => {
+      this.saveList = res.lists
+    })
+
+  }
 
   addList() {
     if (this.addListForm.valid) {
@@ -40,7 +49,22 @@ export class DilogComponent {
         }
       });
     }
+
   }
+
+  // getCheckBox(event: any) {
+  //   if (event.checked) {
+  //     this.httpApi.addCarrierInList(event.source.value, this.carrierId).subscribe((res: any) => {
+  //       console.log(res);
+  //     });
+  //   } else {
+  //     this.httpApi.deleteCarrierFromList(event.source.value, this.carrierId).subscribe((res: any) => {
+  //       console.log(res);
+  //     });
+  //   }
+
+  // }
+
 
 }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -22,6 +22,7 @@ import { RouterLink } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DilogComponent } from '../dilog/dilog.component';
+import { SharedService } from '../../myservices/shared.service';
 
 
 interface Food {
@@ -46,7 +47,7 @@ export class CarrierListComponent {
 
 
 
-  constructor(private myService: ServicesService, private activeRoute: ActivatedRoute, private dialog: MatDialog) {
+  constructor(private myService: ServicesService, private shared: SharedService, private activeRoute: ActivatedRoute, private dialog: MatDialog) {
     this.dialog = dialog;
   }
 
@@ -91,7 +92,8 @@ export class CarrierListComponent {
 
 
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, carrierId: string): void {
+    this.shared.changeMessage(carrierId)
     this.dialog.open(DilogComponent, {
       width: '50vw',
       enterAnimationDuration,

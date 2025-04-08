@@ -120,4 +120,16 @@ export class ServicesService {
     return this.http.post(`https://api-rk-geographical.onrender.com/api/lists/${list}/carriers/${carrier}`, {});
   }
 
+  removeCarrierList(list: any, carrier: any) {
+    return this.http.delete(`https://api-rk-geographical.onrender.com/api/lists/${list}/carriers/${carrier}`, {});
+  }
+
+  getCarrier_List(id: any) {
+    return this.http.get(`https://api-rk-geographical.onrender.com/api/lists/${id}/carriers`);
+  }
+
+  getCarrierListBySaveList(id: string) {
+    return this.http.get(`https://api-rk-geographical.onrender.com/api/lists/${id}`);
+  }
+
 }

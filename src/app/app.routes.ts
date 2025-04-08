@@ -25,6 +25,8 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { BlogListComponent } from './admin/blog-list/blog-list.component';
 import { AddBlogComponent } from './admin/add-blog/add-blog.component';
 import { GetListComponent } from './main/main-profile/get-list/get-list.component';
+import { ShowCarrierInListComponent } from './main/show-carrier-in-list/show-carrier-in-list.component';
+import { NewReviewComponent } from './main/new-review/new-review.component';
 
 export const routes: Routes = [
    {
@@ -118,6 +120,24 @@ export const routes: Routes = [
             pathMatch: 'full'
          },
 
+         {
+            path: 'save-list',
+            component: GetListComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'get-list-detail/:id',
+            component: ShowCarrierInListComponent,
+            pathMatch: 'full'
+         },
+
+         {
+            path: 'write-a-review',
+            component: NewReviewComponent,
+            pathMatch: 'full'
+         }
+
       ]
 
    },
@@ -162,11 +182,6 @@ export const routes: Routes = [
          {
             path: "add-blog",
             component: AddBlogComponent,
-            pathMatch: 'full'
-         },
-         {
-            path: 'list-blog',
-            component: GetListComponent,
             pathMatch: 'full'
          }
 

@@ -4,11 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ServicesService } from '../../../myservices/services.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-get-list',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, RouterLink],
   templateUrl: './get-list.component.html',
   styleUrl: './get-list.component.css'
 })

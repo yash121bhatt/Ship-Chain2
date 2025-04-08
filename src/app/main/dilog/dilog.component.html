@@ -6,11 +6,11 @@
 <span class="example-list-section">
     <ul style="list-style: none;">
         @for (s_list of saveList; track $index) {
-        <!-- <li>
-            <mat-checkbox (change)="getCheckBox($event)" [checked]="s_list.checked">
+        <li>
+            <mat-checkbox (change)="getCheckBox($event, s_list._id)" [checked]="s_list.carriers.includes(carrierId)">
                 {{s_list.name}}
             </mat-checkbox>
-        </li> -->
+        </li>
         }
 
         <!-- <li>

@@ -29,7 +29,6 @@ export class DilogComponent {
 
   ngOnInit() {
     this.Shared.currentMessage.subscribe(message => this.carrierId = message);
-    console.log('oninit string = ', this.carrierId);
     this.httpApi.getAllList().subscribe((res: any) => {
       this.saveList = res.lists
     })
@@ -52,18 +51,21 @@ export class DilogComponent {
 
   }
 
-  // getCheckBox(event: any) {
-  //   if (event.checked) {
-  //     this.httpApi.addCarrierInList(event.source.value, this.carrierId).subscribe((res: any) => {
-  //       console.log(res);
-  //     });
-  //   } else {
-  //     this.httpApi.deleteCarrierFromList(event.source.value, this.carrierId).subscribe((res: any) => {
-  //       console.log(res);
-  //     });
-  //   }
+  getCheckBox(event: any, id: any) {
+    console.log(id);
 
-  // }
+    if (event.checked) {
+      this.httpApi.addCarrierInList(id, this.carrierId).subscribe((res: any) => {
+        console.log(res);
+      });
+    }
+    else {
+      this.httpApi.removeCarrierList(id, this.carrierId).subscribe((res: any) => {
+        console.log(res);
+      });
+    }
+
+  }
 
 
 }

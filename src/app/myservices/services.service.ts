@@ -132,4 +132,12 @@ export class ServicesService {
     return this.http.get(`https://api-rk-geographical.onrender.com/api/lists/${id}`);
   }
 
+  reviewConfig() {
+    return this.http.get('https://api-rk-geographical.onrender.com/api/review/config');
+  }
+
+  addAllReview(data: any) {
+    return this.http.post('https://api-rk-geographical.onrender.com/api/review', data);
+  }
+
 }

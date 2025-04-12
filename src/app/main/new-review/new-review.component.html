@@ -1,376 +1,388 @@
 <section>
     <div class="container mt-4">
         <div class="row">
-            <div class="col-12">
-                <h4><b>Lion Force Transport Inc Review</b></h4>
-                <hr>
-                <div class="mt-4">
-                    <form action="">
-                        <label for="">Title (option)</label>
-                        <input type="text" class="form-control w-50">
-                    </form>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">Would you work with this carrier again?</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (season of seasons; track season) {
-                        <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <div class="result">
-                        <div>
-                            <label class="example-h2">What want well</label>
+            <form [formGroup]="reviewConfigForm" (ngSubmit)="reviewFormSubmit()">
+                <div class="col-12">
+                    <h4><b>Lion Force Transport Inc Review</b></h4>
+                    <hr>
+                    <div class="mt-4">
 
-                            <section class="example-section">
-                                <mat-checkbox class="example-margin" [(ngModel)]="checked"
-                                    [(indeterminate)]="indeterminate" [labelPosition]="labelPosition()"
-                                    [disabled]="disabled()">
-                                    I'm a checkbox
-                                </mat-checkbox>
-                            </section>
+                        <label for="">Title (option)</label>
+                        <input type="text" class="form-control w-50" formControlName="Title">
+
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">Would you work with this carrier again?</label>
+                        <mat-radio-group aria-label="workWithCarrier" class="example-radio-group"
+                            formControlName="Would you work with this carrier again?">
+                            <mat-radio-button class="example-radio-button" value=true>Yes</mat-radio-button>
+                            <mat-radio-button class="example-radio-button" value=false>No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <div class="result">
+                            <div>
+                                <label class="example-h2">What want well</label>
+
+                                <section class="example-section">
+                                    <mat-checkbox class="example-margin" [(indeterminate)]="indeterminate"
+                                        [labelPosition]="labelPosition()" [disabled]="disabled()">
+                                        I'm a checkbox
+                                    </mat-checkbox>
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">Would you like to receive availability updates for this carrier? (Optional)</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (season of seasons; track season) {
-                        <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">Tell us about your overall experience working with this carrier.</label>
-                    <textarea name="" id="" rows="5" class="form-control w-50" placeholder="write here">
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">Would you like to receive availability updates for this carrier?
+                            (Optional)</label>
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+
+                            <mat-radio-button class="example-radio-button" value=true>Yes</mat-radio-button>
+                            <mat-radio-button class="example-radio-button" value=false>No</mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">Tell us about your overall experience working with this carrier.</label>
+                        <textarea name="" id="" rows="5" class="form-control w-50"
+                            formControlName="Tell us about your overall experience working with this carrier."
+                            placeholder="write here">
 
                     </textarea>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">When did you last work with this carrier?</label>
-                    <div class="d-flex">
-                        <select class="form-select w-25 me-2" aria-label="Default select example">
-                            <option selected>Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="3">April</option>
-                            <option value="3">May</option>
-                            <option value="3">June</option>
-                            <option value="3">July</option>
-                            <option value="3">August</option>
-                            <option value="3">September</option>
-                            <option value="3">October</option>
-                            <option value="3">November</option>
-                            <option value="3">December</option>
-                        </select>
-                        <select class="form-select w-25" aria-label="Default select example">
-                            <option selected>Year</option>
-                            <option value="1">2021</option>
-                            <option value="2">2022</option>
-                            <option value="3">2023</option>
-                            <option value="3">2024</option>
-                            <option value="3">2025</option>
-                        </select>
                     </div>
-                </div>
-                <hr>
-                <div class="col-4">
-                    <label for="">How did you find this carrier? (Optional)</label>
-                    <div class="d-flex">
-                        <select class="form-select w-75 me-2" aria-label="Default select example">
-                            <option selected>find this carrier</option>
-                            <option value="1">truckstop.com</option>
-                            <option value="2">Other Lode Board</option>
-                            <option value="3">Internal Database / Tms</option>
-                            <option value="3">CarrierSources</option>
-                            <option value="3">ShipChain</option>
-                            <option value="3">YTD</option>
-                        </select>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">When did you last work with this carrier?</label>
+                        <div class="d-flex" formGroupName="When did you last work with this carrier?">
+
+                            <select class="form-select w-25 me-2" formControlName="month"
+                                aria-label="Default select example">
+                                <option
+                                    *ngFor="let month of allReviewConfigs['When did you last work with this carrier?']?.month"
+                                    value={{month}}>{{month}}</option>
+                            </select>
+
+                            <select class="form-select w-25" formControlName="year" aria-label="Default select example">
+                                @for (year of allReviewConfigs["When did you last work with this carrier?"]?.year; track
+                                year) {
+                                <option value={{year}}>{{year}}</option>
+                                }
+                            </select>
+
+                        </div>
                     </div>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">How was the carrier's rate?</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (cRate of carrierRates; track cRate) {
-                        <mat-radio-button class="example-radio-button" [value]="cRate">{{cRate}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">How often have you worked with this carrier?</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (cRate of workWithCarrier; track cRate) {
-                        <mat-radio-button class="example-radio-button" [value]="cRate">{{cRate}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">What lanes did this carrier run?</label>
-                    <mat-card class="mt-4 w-50">
-                        <label class="px-4 py-2" for="Pickup">Pickup</label>
-                        <div class="ng-autocomplete px-4 py-2">
-                            <ng-autocomplete [data]="pickUps" [searchKeyword]="keyword" (selected)="selected($event)"
-                                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-
-                            </ng-autocomplete>
-
-                            <h1>{{searchName}}</h1>
-
-                            <ng-template #itemTemplate let-item>
-                                <a [innerHTML]="item.name"></a>
-                            </ng-template>
-
-                            <ng-template #notFoundTemplate let-notFound>
-                                <div [innerHTML]="notFound"></div>
-                            </ng-template>
-
+                    <hr>
+                    <div class="col-4">
+                        <label for="">How did you find this carrier? (Optional)</label>
+                        <div class="d-flex">
+                            <select class="form-select w-75 me-2" formControlName="How did you find this carrier?"
+                                aria-label="Default select example">
+                                @for (value of allReviewConfigs["How did you find this carrier?"]; track
+                                $index) {
+                                <option value={{value}}>{{value}}</option>
+                                }
+                            </select>
                         </div>
-                        <label class="px-4" for="">DropOff</label>
-                        <div class="ng-autocomplete px-4">
-                            <ng-autocomplete [data]="dropOffs" [searchKeyword]="keyword" (selected)="selected($event)"
-                                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">How was the carrier's rate?</label>
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="How was the carrier's rate?">
+                            @for (carrierRate of allReviewConfigs["How was the carrier's rate?"]; track carrierRate) {
+                            <mat-radio-button class="example-radio-button">{{carrierRate}}</mat-radio-button>
+                            }
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">How often have you worked with this carrier?</label>
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="How often have you worked with this carrier?">
+                            @for (workWithThisCarrier of allReviewConfigs
+                            ["How often have you worked with this carrier?"]; track workWithThisCarrier) {
+                            <mat-radio-button class="example-radio-button">{{workWithThisCarrier}}</mat-radio-button>
+                            }
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">What lanes did this carrier run?</label>
+                        <!-- <div formArrayName="What lanes did this carrier run?">
+                            <div *ngFor="let lane of getLanes().controls; let i = index">
+                                <mat-card class="mt-4 w-50">
+                                    <label class="px-4 py-2" for="Pickup">Pickup {{i+1}}</label>
+                                    <div class="ng-autocomplete px-4 py-2">
+                                        <ng-autocomplete [data]="pickUps" [searchKeyword]="keyword"
+                                            (selected)="selected($event, i)" [itemTemplate]="itemTemplate"
+                                            [notFoundTemplate]="notFoundTemplate" [formGroupName]="i"
+                                            formControlName="pickup">
 
-                            </ng-autocomplete>
+                                        </ng-autocomplete>
 
-                            <h1>{{searchName}}</h1>
+                                        <h1>{{searchName}}</h1>
 
-                            <ng-template #itemTemplate let-item>
-                                <a [innerHTML]="item.name"></a>
-                            </ng-template>
+                                        <ng-template #itemTemplate let-item>
+                                            <a [innerHTML]="item.name"></a>
+                                        </ng-template>
 
-                            <ng-template #notFoundTemplate let-notFound>
-                                <div [innerHTML]="notFound"></div>
-                            </ng-template>
+                                        <ng-template #notFoundTemplate let-notFound>
+                                            <div [innerHTML]="notFound"></div>
+                                        </ng-template>
 
-                        </div>
+                                    </div>
+                                    <label class="px-4" for="">DropOff {{i+1}}</label>
+                                    <div class="ng-autocomplete px-4">
+                                        <ng-autocomplete [data]="dropOffs" [searchKeyword]="keyword"
+                                            (selected)="selected($event, i)" [itemTemplate]="itemTemplate"
+                                            [notFoundTemplate]="notFoundTemplate" [formGroupName]="i"
+                                            formControlName="dropoff">
 
-                    </mat-card>
-                    <mat-card *ngIf="showCarrierLane" class="mt-4 w-50">
-                        <label class="px-4 py-2" for="Pickup">Pickup</label>
-                        <div class="ng-autocomplete px-4">
-                            <ng-autocomplete [data]="pickUps" [searchKeyword]="keyword" (selected)="selected($event)"
-                                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+                                        </ng-autocomplete>
 
-                            </ng-autocomplete>
+                                        <h1>{{searchName}}</h1>
 
-                            <h1>{{searchName}}</h1>
+                                        <ng-template #itemTemplate let-item>
+                                            <a [innerHTML]="item.name"></a>
+                                        </ng-template>
 
-                            <ng-template #itemTemplate let-item>
-                                <a [innerHTML]="item.name"></a>
-                            </ng-template>
+                                        <ng-template #notFoundTemplate let-notFound>
+                                            <div [innerHTML]="notFound"></div>
+                                        </ng-template>
 
-                            <ng-template #notFoundTemplate let-notFound>
-                                <div [innerHTML]="notFound"></div>
-                            </ng-template>
+                                    </div>
 
-                        </div>
-                        <label class="px-4 py-2" for="">DropOff</label>
-                        <div class="ng-autocomplete px-4">
-                            <ng-autocomplete [data]="dropOffs" [searchKeyword]="keyword" (selected)="selected($event)"
-                                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-
-                            </ng-autocomplete>
-
-                            <h1>{{searchName}}</h1>
-
-                            <ng-template #itemTemplate let-item>
-                                <a [innerHTML]="item.name"></a>
-                            </ng-template>
-
-                            <ng-template #notFoundTemplate let-notFound>
-                                <div [innerHTML]="notFound"></div>
-                            </ng-template>
-
-                        </div>
-
-                    </mat-card>
-                    <button mat-flat-button class="mt-4" (click)="addLane()">Add lane</button>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="" class="mx-4">Timeliness</label>
-                    <div class="rating-container">
-                        <h5>{{ title }}</h5>
-                        <div class="d-flex align-items-center">
-                            <span class="rating-label me-3">{{ leftLabel }}</span>
-                            <div class="btn-group" role="group">
-                                <button *ngFor="let rating of [1, 2, 3, 4, 5 , 6 , 7, 8, 9, 10]" type="button"
-                                    class="rating-btn" [class.active]="isSelected(rating)"
-                                    (click)="onRatingClick(rating)">
-                                    {{ rating }}
-                                </button>
+                                </mat-card>
                             </div>
-                            <span class="rating-label ms-3">{{ rightLabel }}</span>
-                        </div>
-                    </div>
+                        </div> -->
+                        <!-- <mat-card *ngIf="showCarrierLane" class="mt-4 w-50">
+                            <label class="px-4 py-2" for="Pickup">Pickup</label>
+                            <div class="ng-autocomplete px-4">
+                                <ng-autocomplete [data]="pickUps" [searchKeyword]="keyword"
+                                    (selected)="selected($event)" [itemTemplate]="itemTemplate"
+                                    [notFoundTemplate]="notFoundTemplate" formControlName="pickup">
 
-                </div>
+                                </ng-autocomplete>
 
-                <div>
-                    <label for="" class="mx-4">Quality of Equipment</label>
-                    <div class="rating-container">
-                        <h5>{{ title }}</h5>
-                        <div class="d-flex align-items-center">
-                            <span class="rating-label me-3">{{ leftLabel }}</span>
-                            <div class="btn-group" role="group">
-                                <button *ngFor="let rating of [1, 2, 3, 4, 5 , 6 , 7, 8, 9, 10]" type="button"
-                                    class="rating-btn" [class.active]="isSelected(rating)"
-                                    (click)="onRatingClick(rating)">
-                                    {{ rating }}
-                                </button>
+                                <h1>{{searchName}}</h1>
+
+                                <ng-template #itemTemplate let-item>
+                                    <a [innerHTML]="item.name"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+
                             </div>
-                            <span class="rating-label ms-3">{{ rightLabel }}</span>
-                        </div>
-                    </div>
+                            <label class="px-4 py-2" for="">DropOff</label>
+                            <div class="ng-autocomplete px-4">
+                                <ng-autocomplete [data]="dropOffs" [searchKeyword]="keyword"
+                                    (selected)="selected($event)" [itemTemplate]="itemTemplate"
+                                    [notFoundTemplate]="notFoundTemplate" formControlName="dropOff">
 
-                </div>
-                <div>
-                    <div class="rating-container">
-                        <label for="" class="mx-4">Communication</label>
-                        <h5>{{ title }}</h5>
-                        <div class="d-flex align-items-center">
-                            <span class="rating-label me-3">{{ leftLabel }}</span>
-                            <div class="btn-group" role="group">
-                                <button *ngFor="let rating of [1, 2, 3, 4, 5 , 6 , 7, 8, 9, 10]" type="button"
-                                    class="rating-btn" [class.active]="isSelected(rating)"
-                                    (click)="onRatingClick(rating)">
-                                    {{ rating }}
-                                </button>
+                                </ng-autocomplete>
+
+                                <h1>{{searchName}}</h1>
+
+                                <ng-template #itemTemplate let-item>
+                                    <a [innerHTML]="item.name"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                </ng-template>
+
                             </div>
-                            <span class="rating-label ms-3">{{ rightLabel }}</span>
+
+                        </mat-card> -->
+                        <button mat-flat-button class="mt-4" (click)="addLane()">Add lane</button>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="" class="mx-4">Timeliness</label>
+                        <div class="rating-container">
+                            <h5>{{ title }}</h5>
+                            <div class="d-flex align-items-center">
+                                <span class="rating-label me-3">{{ leftLabel }}</span>
+                                <div class="btn-group" role="group">
+                                    @for (rating of allReviewConfigs["Timeliness"]; track rating) {
+                                    <button type="button" class="rating-btn" [class.active]="isSelected(rating)"
+                                        (click)="onRatingClick(rating)">
+                                        {{ rating }}
+                                    </button>
+                                    }
+                                </div>
+                                <span class="rating-label ms-3">{{ rightLabel }}</span>
+                            </div>
                         </div>
+
                     </div>
 
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <div class="result">
-                        <div>
-                            <label class="example-h2">What type(s) of freight did you ship?</label>
+                    <div>
+                        <label for="" class="mx-4">Quality of Equipment</label>
+                        <div class="rating-container">
+                            <h5>{{ title }}</h5>
+                            <div class="d-flex align-items-center">
+                                <span class="rating-label me-3">{{ leftLabel }}</span>
+                                <div class="btn-group" role="group">
+                                    @for (rating of allReviewConfigs["Quality of Equipment"]; track rating) {
+                                    <button type="button" class="rating-btn" [class.active]="isSelected(rating)"
+                                        (click)="onRatingClick(rating)">
+                                        {{ rating }}
+                                    </button>
+                                    }
+                                </div>
+                                <span class="rating-label ms-3">{{ rightLabel }}</span>
+                            </div>
+                        </div>
 
-                            <section class="example-section">
-                                <mat-checkbox class="example-margin" [(ngModel)]="checked"
-                                    [(indeterminate)]="indeterminate" [labelPosition]="labelPosition()"
-                                    [disabled]="disabled()">
-                                    freight did you ship
-                                </mat-checkbox>
-                            </section>
+                    </div>
+                    <div>
+                        <div class="rating-container">
+                            <label for="" class="mx-4">Communication</label>
+                            <h5>{{ title }}</h5>
+                            <div class="d-flex align-items-center">
+                                <span class="rating-label me-3">{{ leftLabel }}</span>
+                                <div class="btn-group" role="group">
+                                    @for (rating of allReviewConfigs["Communication"]; track rating) {
+                                    <button type="button" class="rating-btn" [class.active]="isSelected(rating)"
+                                        (click)="onRatingClick(rating)">
+                                        {{ rating }}
+                                    </button>
+                                    }
+                                </div>
+                                <span class="rating-label ms-3">{{ rightLabel }}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <div class="result">
+                            <div>
+                                <label class="example-h2">What type(s) of freight did you ship?</label>
+
+                                <section class="example-section">
+                                    <mat-checkbox class="example-margin"
+                                        *ngFor="let freight of allReviewConfigs['What type(s) of freight did you ship?']; let i = index"
+                                        formControlName="What type(s) of freight did you ship?"
+                                        [(indeterminate)]="indeterminate" [labelPosition]="labelPosition()">
+                                        {{freight.name}}
+                                    </mat-checkbox>
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <div class="result">
-                        <div>
-                            <label class="example-h2">What type(s) of truck did you use?</label>
+                    <hr>
+                    <div class="mt-4">
+                        <div class="result">
+                            <div>
+                                <label class="example-h2">What type(s) of truck did you use?</label>
 
-                            <section class="example-section">
-                                <mat-checkbox class="example-margin" [(ngModel)]="checked"
-                                    [(indeterminate)]="indeterminate" [labelPosition]="labelPosition()"
-                                    [disabled]="disabled()">
-                                    type(s) of truck
-                                </mat-checkbox>
-                            </section>
+                                <section class="example-section">
+                                    <mat-checkbox class="example-margin"
+                                        *ngFor="let truckUse of allReviewConfigs['What type(s) of truck did you use?']; let i = index"
+                                        formControlName="truckUse" [(indeterminate)]="indeterminate"
+                                        [labelPosition]="labelPosition()" [disabled]="disabled()">
+                                        {{truckUse.name}}
+                                    </mat-checkbox>
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <div class="result">
-                        <div>
-                            <label class="example-h2">What type(s) of shipments did this carrier take?</label>
+                    <hr>
+                    <div class="mt-4">
+                        <div class="result">
+                            <div>
+                                <label class="example-h2">What type(s) of shipments did this carrier take?</label>
 
-                            <section class="example-section">
-                                <mat-checkbox class="example-margin" [(ngModel)]="checked"
-                                    [(indeterminate)]="indeterminate" [labelPosition]="labelPosition()"
-                                    [disabled]="disabled()">
-                                    shipments did this carrier take
-                                </mat-checkbox>
-                            </section>
+                                <section class="example-section">
+                                    <mat-checkbox class="example-margin"
+                                        *ngFor="let shipment of allReviewConfigs['What type(s) of shipments did this carrier take?']; let i = index"
+                                        formControlName="shipmentTruck" [(indeterminate)]="indeterminate"
+                                        [labelPosition]="labelPosition()" [disabled]="disabled()">
+                                        {{shipment.name}}
+                                    </mat-checkbox>
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <div class="result">
-                        <div>
-                            <label class="example-h2">What specialized services did this carrier provide?
-                                (Optional)</label>
+                    <hr>
+                    <div class="mt-4">
+                        <div class="result">
+                            <div>
+                                <label class="example-h2">What specialized services did this carrier provide?
+                                    (Optional)</label>
 
-                            <section class="example-section">
-                                <mat-checkbox class="example-margin" [(ngModel)]="checked"
-                                    [(indeterminate)]="indeterminate" [labelPosition]="labelPosition()"
-                                    [disabled]="disabled()">
-                                    carrier provide
-                                </mat-checkbox>
-                            </section>
+                                <section class="example-section">
+                                    <mat-checkbox class="example-margin"
+                                        *ngFor="let specialized of allReviewConfigs['What specialized services did this carrier provide?']; let i = index"
+                                        formControlName="specializedService" [(indeterminate)]="indeterminate"
+                                        [labelPosition]="labelPosition()" [disabled]="disabled()">
+                                        {{specialized.name}}
+                                    </mat-checkbox>
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">Did this carrier use electronic tracking?</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (season of seasons; track season) {
-                        <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <span class="">Examples: redacted rate confirmation, TMS, emails, etc.
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">Did this carrier use electronic tracking?</label>
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="Did this carrier use electronic tracking?">
 
-                        This will expedite the review approval process and will never be shared publicly.</span>
-                    <input type="file" class="form-control w-25 ">
+                            <mat-radio-button class="example-radio-button">Yes</mat-radio-button>
+                            <mat-radio-button class="example-radio-button">No</mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <span class="">Examples: redacted rate confirmation, TMS, emails, etc.
+
+                            This will expedite the review approval process and will never be shared publicly.</span>
+                        <input type="file" class="form-control w-25 ">
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">Is your brokerage related to this carrier in any way?</label>
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="Is your brokerage related to this carrier in any way?">
+                            <mat-radio-button class="example-radio-button">Yes</mat-radio-button>
+                            <mat-radio-button class="example-radio-button">No</mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">Are you willing to be a reference for this carrier?</label>
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="Are you willing to be a reference for this carrier?">
+                            <mat-radio-button class="example-radio-button">Yes</mat-radio-button>
+                            <mat-radio-button class="example-radio-button">No</mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <label for="">I would like my review to be anonymous.</label>
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="I would like my review to be anonymous.">
+                            <mat-radio-button class="example-radio-button">Yes</mat-radio-button>
+                            <mat-radio-button class="example-radio-button">No</mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                    <hr>
+                    <button mat-flat-button>Submit</button>
                 </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">Is your brokerage related to this carrier in any way?</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (season of seasons; track season) {
-                        <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">Are you willing to be a reference for this carrier?</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (season of seasons; track season) {
-                        <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <div class="mt-4">
-                    <label for="">I would like my review to be anonymous.</label>
-                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                        [(ngModel)]="favoriteSeason">
-                        @for (season of seasons; track season) {
-                        <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
-                        }
-                    </mat-radio-group>
-                </div>
-                <hr>
-                <button mat-flat-button>Submit</button>
-            </div>
+            </form>
         </div>
     </div>
 </section>

@@ -133,7 +133,7 @@ export const routes: Routes = [
          },
 
          {
-            path: 'write-a-review',
+            path: 'write-a-review/:carrierId',
             component: NewReviewComponent,
             pathMatch: 'full'
          }

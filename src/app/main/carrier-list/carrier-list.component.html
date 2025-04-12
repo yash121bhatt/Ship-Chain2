@@ -208,7 +208,8 @@
                                 <button mat-button
                                     (click)="openDialog('0ms', '0ms', carrier._id)"><mat-icon>bookmark</mat-icon>Save
                                     Carrier</button>
-                                <button mat-button [routerLink]='["/write-a-review"]'><mat-icon>edit</mat-icon>Write a
+                                <button mat-button
+                                    [routerLink]='["/write-a-review", carrier._id]'><mat-icon>edit</mat-icon>Write a
                                     Review</button>
                             </div>
                         </div>

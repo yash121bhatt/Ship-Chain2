@@ -97,14 +97,17 @@ export class NewReviewComponent {
     this.carrierId = this.activetRoute.snapshot.params['carrierId']
     this.reviewConfigForm = this.fb.group({
       "carrierId": [this.carrierId],
-      "Title": [''],
-      "Would you work with this carrier again?": [],
-      "Tell us about your overall experience working with this carrier.": [''],
+      "Title (Optional)": [''],
+      "Would you work with this carrier again?": [''],
+      "What went well": this.fb.array([]),
+      "What went poorly": this.fb.array([]),
+      "Would you like to receive availability updates for this carrier? (Optional)": [''],
+      "Tell us about your overall experience working with this carrier": [''],
       "When did you last work with this carrier?": this.fb.group({
         "month": [''],
         "year": ['']
       }),
-      "How did you find this carrier?": [''],
+      "How did you find this carrier? (Optional)": [''],
       "How was the carrier's rate?": [''],
       "How often have you worked with this carrier?": [''],
       "What lanes did this carrier run?": this.fb.array([
@@ -113,19 +116,20 @@ export class NewReviewComponent {
           "dropoff": ['']
         }),
       ]),
-      "Timeliness": [''],
-      "Quality of Equipment": [''],
-      "Communication": [''],
-      "What type(s) of freight did you ship?": this.fb.array(['']),
-      "What type(s) of truck did you use?": this.fb.array([1, 2, 3, 4]),
-      "What type(s) of shipments did this carrier take?": this.fb.array(['']),
-      "What specialized services did this carrier provide?": this.fb.array(['']),
+      "Timeliness": [0],
+      "Quality of Equipment": [0],
+      "Communication": [0],
+      "What type(s) of freight did you ship?": this.fb.array([]),
+      "What type(s) of truck did you use?": this.fb.array([]),
+      "What type(s) of shipments did this carrier take?": this.fb.array([]),
+      "What specialized services did this carrier provide? (Optional)": this.fb.array([]),
       "Did this carrier use electronic tracking?": [''],
+      "Did the tracking work throughout the duration of their haul?": [''],
       "Add a verification screenshot": [''],
       "Is your brokerage related to this carrier in any way?": [''],
       "Are you willing to be a reference for this carrier?": [''],
-      "I would like my review to be anonymous.": ['']
-    })
+      "I would like my review to be anonymous": ['']
+    });
   }
 
   ngOnInit() {
@@ -155,21 +159,16 @@ export class NewReviewComponent {
   }
 
   reviewFormSubmit() {
-    console.log(this.reviewConfigForm.value);
-    this.http.addAllReview(this.reviewConfigForm.value).subscribe((res: any) => {
-      console.log(res);
-
-      if (res.success) {
-        this.reviewConfigForm.reset();
-      }
-
-    },
-      (err: any) => {
-        console.log(err);
-
-      }
-    )
+    console.table(this.reviewConfigForm.value);
+    // this.http.addAllReview(this.reviewConfigForm.value).subscribe((res: any) => {
+    //   console.log(res);
+    //   if (res.success) {
+    //     this.reviewConfigForm.reset();
+    //   }
+    // },
+    //   (err: any) => {
+    //     console.log(err);
+    //   }
+    // )
   }
-
-
 }

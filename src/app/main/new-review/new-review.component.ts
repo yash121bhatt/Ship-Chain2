@@ -166,8 +166,23 @@ export class NewReviewComponent {
   }
 
   reviewFormSubmit() {
-    console.log(this.reviewConfigForm.value);
-    // this.http.addAllReview(this.reviewConfigForm.value).subscribe((res: any) => {
+    // console.log(this.reviewConfigForm.value);
+
+    const formValue = this.reviewConfigForm.value;
+
+    const freightSelections: boolean[] = formValue["What type(s) of freight did you ship?"];
+    const freightOptions = this.allReviewConfigs["What type(s) of freight did you ship?"];
+
+    const selectedFreights = freightSelections
+      .map((selected, index) => selected ? freightOptions[index]?.name : null)
+      .filter(name => name !== null);
+
+    // Replace the boolean array with actual selected freight names
+    formValue["What type(s) of freight did you ship?"] = selectedFreights;
+
+    console.log(formValue);
+
+    // this.http.addAllReview(formValue).subscribe((res: any) => {
     //   console.log(res);
     //   if (res.success) {
     //     this.reviewConfigForm.reset();

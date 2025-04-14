@@ -10,12 +10,13 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { ServicesService } from '../../myservices/services.service';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-review',
   standalone: true,
-  imports: [CommonModule, MatRadioModule, FormsModule, MatCheckboxModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, AutocompleteLibModule, MatButtonModule, ReactiveFormsModule],
+  imports: [CommonModule, MatRadioModule, FormsModule, MatCheckboxModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, AutocompleteLibModule, MatButtonModule, ReactiveFormsModule, MatTabsModule],
   templateUrl: './new-review.component.html',
   styleUrl: './new-review.component.css'
 })
@@ -134,10 +135,16 @@ export class NewReviewComponent {
 
   ngOnInit() {
     this.http.reviewConfig().subscribe((res: any) => {
-      console.log(res);
-
       this.allReviewConfigs = res.configs;
-      console.log(this.allReviewConfigs);
+
+      const freightOptions = this.allReviewConfigs['What type(s) of freight did you ship?'] || [];
+
+      const freightFormArray = this.fb.array(
+        freightOptions.map(() => this.fb.control(false))
+      );
+
+      this.reviewConfigForm.setControl('What type(s) of freight did you ship?', freightFormArray);
+
 
     })
   }
@@ -159,7 +166,7 @@ export class NewReviewComponent {
   }
 
   reviewFormSubmit() {
-    console.table(this.reviewConfigForm.value);
+    console.log(this.reviewConfigForm.value);
     // this.http.addAllReview(this.reviewConfigForm.value).subscribe((res: any) => {
     //   console.log(res);
     //   if (res.success) {
@@ -171,4 +178,8 @@ export class NewReviewComponent {
     //   }
     // )
   }
+
+  // getLanes(){
+
+  // }
 }
